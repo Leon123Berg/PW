@@ -1,0 +1,313 @@
+<div class="container-fluid pt-8 px-8 pb-4 border">
+  <div class="row align-items-center">
+    <div class="col-12 col-md-8"></div>
+    <div class="col-12 col-md-4 text-end pb-7">
+      <b>Rapportnummer:</b><span id="projectId"> {{ project.id }}</span>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6 d-flex pb-3 flex-column">
+      <h2 class="text-primary"><b>Zonnepanelen</b></h2>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6 d-flex flex-column">
+      <p>
+        Om een goede inschatting te kunnen maken van het optimaal aantal
+        zonnepanelen op je woning maken we gebruik van de dakscan van Novasole.
+        Wij nemen hierbij de dakdelen mee die de beste opbrengst (van gemiddeld
+        tot uitstekend) garanderen. Meer panelen zijn dus mogelijk, maar die
+        brengen dan minder op. De zon draait van oost naar zuid naar west, wat
+        we door de zonneroos weergeven.
+      </p>
+      <!-- NovaSole API aanroepen -->
+      <button id="novasoleBtn" class="btn w-100 btn-primary my-3">
+        Haal gegevens op
+      </button>
+      {% if module.error_novasole %}
+      	<span class="text-danger ps-1">Er is een error ontstaan tijdens het ophalen van de zonnepanelen. Probeer opnieuw of contact admin.</span>
+      {% endif %}
+    </div>
+    <div class="col-md-6">
+      <div class="row align-items-center">
+        {% if module.novasole_api_aangeroepen and module.max_zonnepanelen > 0 %}
+          <div class="mapsParentDiv2 p-4 col-12 text-center">
+            <img 
+              class="mapsImg1" 
+              src="{{ module.legplan_foto }}" />
+            <img
+              class="mapsImg2"
+              src="https://assets.bettyblocks.com/9851bc7ef3ed45578f665019dd7a2b4c_assets/files/wdwa-compass-zonnepanelen"
+            />
+          </div>
+        {% else %}
+          <div class="mapsParentDiv1 col-12 text-center">
+            <iframe
+              class="mapsIframe1 pt-1"
+              src="https://maps.google.com/maps?width=99%25&height=650&hl=nl&q={{#ld}}{{google_query}}{{/ld}}+()&t=k&z=20&ie=UTF8&iwloc=addr&output=embed"
+            ></iframe>
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+
+  {% if module1.aantal_zonnepanelen > 0 or module.novasole_api_aangeroepen %}
+    <div class="row">
+      <div class="col-10">
+        <div class="row">
+          <div class="col-md-8 d-flex pb-3 flex-column">
+            <h2 class="text-primary"><b>Samengevat</b></h2>
+          </div>
+        </div>
+        <div class="row justify-content-between d-flex align-items-end">
+          <div class="col-md-12 pb-7 ps-7 pe-7">
+            <div class="row">
+              <div class="col-10 py-2 border border-primary">
+                Benodigd aantal panelen op basis van jouw energieverbruik
+              </div>
+              <div class="col-2 py-2 border border-primary d-flex justify-content-center align-items-center">
+                {{module.benodigde_zonnepanelen}}
+              </div>
+            </div>
+            {% if module1.aantal_zonnepanelen > 0 %}
+              <div class="row">
+                <div class="col-10 py-2 border border-primary">
+                  Aantal panelen aanwezig
+                </div>
+                <div class="col-2 py-2 border border-primary d-flex justify-content-center align-items-center">
+                  {{module1.aantal_zonnepanelen}}
+                </div>
+              </div>
+            {% endif %}
+            {% if module.max_zonnepanelen > 0 %}
+              <div class="row">
+                <div class="col-10 py-2 border border-primary">
+                  Optimaal te plaatsen panelen
+                </div>
+                <div class="col-2 py-2 border border-primary d-flex justify-content-center align-items-center">
+                  {{module.max_zonnepanelen}}
+                </div>
+              </div>
+            {% endif %}
+            {% if module1.aantal_zonnepanelen != '0' and module1.aantal_zonnepanelen != nil and module.max_zonnepanelen > 0 %}
+              <div class="row bg-primary text-white">
+                <div class="col-10 py-2 border border-primary">
+                  Maximaal te plaatsen panelen
+                </div>
+                <div class="col-2 py-2 border border-primary d-flex justify-content-center align-items-center">
+                  {{ module.max_zonnepanelen | minus: module1.aantal_zonnepanelen | to_number }}
+                </div>
+              </div>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>  
+  {% endif %}
+</div>
+
+<div class="container-fluid p-8 bg-primary text-white">
+  <div class="row pb-5">
+    <div class="col-md-12">
+      <h2>
+        <b>Welk paneel heeft de voorkeur?</b>
+      </h2>
+    </div>
+  </div>
+  <div class="row pb-5">
+    <div class="col-md-12">
+      <p>
+        Zonnepanelen zijn verkrijgbaar in diverse maten, soorten en opbrengsten
+        die samen met de installatie en de garantietermijn de prijs bepalen. De
+        berekening die hier nu gemaakt wordt is een indicatie en gebaseerd op
+        het aanbod van een landelijk werkende aanbieder van zonnepanelen. Ze
+        leveren kwalitatieve zeer hoogwaardige glas/glas panelen met
+        micro-omvormers of stringomvormers voor een eerlijke prijs. We rekenen
+        in dit geval met serieel geschakelde panelen met een opbrengst van
+        400kWh, benodigd om de electriciteitsbehoefte te dekken van het huidige
+        verbruik en het meerverbruik door duurzaam verwarmen. Meer panelen
+        kiezen (maar niet meer dan het optimale dakpotentieel) is mogelijk en kan
+        hieronder worden ingevuld in het vakje gekozen aantal zonnepanelen.
+      </p>
+    </div>
+  </div>
+  <div class="row align-items-center">
+    <div class="col-md-12 text-primary">
+      <div class="row">
+        <div
+          class="col-md-4 py-4 border border-primary d-flex align-items-center"
+          style="background-color: #c1c202"
+        >
+          <b>Benodigde energie</b>
+        </div>
+        <div class="col-md-2 py-4 bg-secondary border border-primary">
+          <div class="input-group">
+            <input
+              disabled
+              type="number"
+              class="form-control border-primary bg-secondary px-0 pb-0"
+              aria-label="Amount"
+              style="border: none; border-radius: 0; border-bottom: solid"
+              id="benodigdKwh"
+              value="{{ module.benodigde_kw_h | ceil }}"
+            />
+            <div class="pt-4">
+              <span
+                class="bg-secondary border-secondary text-primary"
+                ><b>kWh</b></span
+              >
+            </div>
+          </div>
+        </div>
+        <div
+          class="col-md-4 py-4 border border-primary d-flex align-items-center"
+          style="background-color: #c1c202"
+        >
+          <b class="pr-1">Gekozen aantal zonnepanelen</b>
+          <div style="display: inline-block; position: relative;">
+            <i data-feather="info" class="tooltip-trigger" style="cursor: pointer; width: 20px; height: 20px;"></i>
+            <div class="custom-tooltip" style="display: none; position: absolute; bottom: 100%; left: 50%; transform: translateX(-50%); padding: 5px; background-color: black; color: white; border-radius: 5px; z-index: 100;">
+              Selecteer hoeveel zonnepanelen je wilt aanschaffen.
+            </div>
+          </div>
+        </div>
+        <div class="col-md-2 py-4 bg-secondary border border-primary">
+          <input
+            type="number"
+            class="form-control border-primary bg-secondary px-0 pb-0"
+            aria-label="Amount"
+            style="border: none; border-radius: 0; border-bottom: solid"
+            id="aantalZonP"
+            value="{% if module.handmatig_gekozen_zonnepanelen_aangepast %}{{module.gekozen_zonnepanelen}}{% else %}{% if module.gekozen_zonnepanelen == nil or module.gekozen_zonnepanelen == '' %}{% capture maxAantalZp %}{{ module.max_zonnepanelen | to_number }}{% endcapture %}{% capture benodigdeZp %}{{ module.benodigde_zonnepanelen | to_number }}{% endcapture %}{% capture alAanwezigZp %}{{ module1.aantal_zonnepanelen | to_number }}{% endcapture %}{% capture ruimteZp %}{{ maxAantalZp | minus: alAanwezigZp }}{% endcapture %}{% assign maxAantalZp = maxAantalZp | to_number %}{% assign benodigdeZp = benodigdeZp | to_number %}{% assign alAanwezigZp = alAanwezigZp | to_number %}{% assign ruimteZp = ruimteZp | to_number %}{% if module.novasole_api_aangeroepen == false %}{{ benodigdeZp | minus: alAanwezigZp }}{% else %}{% if benodigdeZp <= ruimteZp %}{{ benodigdeZp }}{% else %}{{ ruimteZp }}{% endif %}{% endif %}{% else %}{{module.gekozen_zonnepanelen}}{% endif %}{% endif %}"
+            max="{{module.max_zonnepanelen}}"
+            step="1"
+            min="4"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12 text-primary">
+      <div class="row">
+        <div
+          class="col-md-4 py-4 border border-primary d-flex align-items-center"
+          style="background-color: #c1c202"
+        >
+          <b>Benodigd aantal</b>
+        </div>
+        <div class="col-md-2 py-4 bg-secondary border border-primary">
+          <input
+            disabled
+            type="number"
+            class="form-control border-primary bg-secondary px-0 pb-0"
+            aria-label="Amount"
+            style="border: none; border-radius: 0; border-bottom: solid"
+            id="aantalZonPNodig"
+            value="{{module.benodigde_zonnepanelen}}"
+          />
+        </div>
+        <div
+          class="col-md-4 py-4 border border-primary d-flex align-items-center"
+          style="background-color: #c1c202"
+        >
+          <b>Verwachte opbrengst</b>
+        </div>
+        <div class="col-md-2 py-4 bg-secondary border border-primary">
+          <div class="input-group">
+              <input
+                disabled
+                type="number"
+                class="form-control border-primary bg-secondary px-0 pb-0"
+                aria-label="Amount"
+                style="border: none; border-radius: 0; border-bottom: solid"
+                id="opbrengstKwh"
+                value="{{ module.opbrengst_kw_h }}"
+              />
+            <div class="pt-4">
+              <span 
+                class="bg-secondary border-secondary text-primary"
+                ><b>kWh</b></span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container pt-5">
+        <div class="row">
+          {% for afbeelding in afbeeldingen %}
+            {% if afbeelding.unique == "33a92bf5" or afbeelding.unique == "b251cb12" or afbeelding.unique == "dd35cba0" %}
+              <div
+                class="col d-flex"
+              >
+                <img
+                  src="{{ afbeelding.image }}"
+                  alt="schuin zonnepanelen dak"
+                  style="width: 100%; height: auto;"
+                />
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid p-7" style="background-color: #f1f1f1">
+  <h4 class="row pt-5"><b>Te nemen maatregel</b></h4>
+  <table class="table">
+    <thead>
+      <tr class="py-3">
+        <th class="col-2">Aantal gekozen panelen</th>
+        <th class="col-2">Richtprijs</th>
+        <th class="col-2">Besparing per jaar</th>
+        <th class="col-2">Terugverdientijd in jaren</th>
+        <th class="col-2">Offerte?</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="">
+        <td>
+          <input
+            disabled
+            type="number"
+            class="form-control px-0 pb-0"
+            aria-label="Amount"
+            style="border: none; background-color: #ffffff"
+            id="aantalZonPTabel"
+            value="{% if module.gekozen_zonnepanelen == nil or module.gekozen_zonnepanelen == '' %}{% capture maxAantalZp %}{{ module.max_zonnepanelen | to_number }}{% endcapture %}{% capture benodigdeZp %}{{ module.benodigde_zonnepanelen | to_number }}{% endcapture %}{% capture alAanwezigZp %}{{ module1.aantal_zonnepanelen | to_number }}{% endcapture %}{% capture ruimteZp %}{{ maxAantalZp | minus: alAanwezigZp }}{% endcapture %}{% assign maxAantalZp = maxAantalZp | to_number %}{% assign benodigdeZp = benodigdeZp | to_number %}{% assign alAanwezigZp = alAanwezigZp | to_number %}{% assign ruimteZp = ruimteZp | to_number %}{% if module.novasole_api_aangeroepen == false %}{{ benodigdeZp | minus: alAanwezigZp }}{% else %}{% if benodigdeZp <= ruimteZp %}{{ benodigdeZp }}{% else %}{{ ruimteZp }}{% endif %}{% endif %}{% else %}{{module.gekozen_zonnepanelen}}{% endif %}"
+          />
+        </td>
+        <td class="pt-7" id="zonnepanelenPrijs">
+          {{ module.kosten | to_currency: "€", 0,".", "," }}
+        </td>
+        <td class="pt-7" id="besparingElektra">
+          {{ module.besparing_elektra | to_currency: "€", 0,".", "," }}
+        </td>
+        <td class="pt-7" id="terugverdientijd">
+          {{ module.kosten | divided_by: module.besparing_elektra | round: 1 }}
+        </td>
+        <td class="pt-6">
+          <input
+            type="checkbox"
+            class="form-check-input offerteChkBoxs"
+            id="zonnepanelenOfferteChkB"
+            name="zonnepanelenOfferteChkB"
+            {% if offerte.zonnepanelen %}checked{% endif %}
+          />
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="container-fluid p-4 d-flex d-flex justify-content-between">
+  <a href="/positiefwonen/project/zonnepanelen/{{project.uuid}}">
+    <button type="button" class="btn btn-primary">Vorige pagina</button>
+  </a>
+  <a href="/positiefwonen/project/samenvatting-advies/{{project.uuid}}">
+    <button type="button" class="btn btn-primary">Volgende pagina</button>
+  </a>
+</div>

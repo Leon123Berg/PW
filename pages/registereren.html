@@ -1,0 +1,325 @@
+<html lang="nl">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="description" content="{{ description }}" />
+    <meta name="author" content="" />
+    <title>{{title}}</title>
+    <link
+      rel="stylesheet"
+      href="{% stylesheet_url 'assets/css/theme.bundle.css' %}"
+    />
+    <link rel="stylesheet" href="{% stylesheet_url 'custom.css' %}" />
+    <link
+      rel="icon"
+      type="image/png"
+      href="{% file_asset_url 'positief_wonen_logo' %}"
+    />
+    <link rel="stylesheet" href="{% stylesheet_url 'zonneroos' %}" />
+    <style>
+      /* Remove margin between header and iframe */
+      body, html {
+        margin: 0;
+        padding: 0;
+      }
+      .bg-secondary {
+        margin-bottom: 0;
+      }
+      iframe {
+        display: block; /* Removes iframe's default spacing */
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Bar met logo -->
+    <div class="container-fluid bg-secondary p-4">
+      <div class="row align-items-center justify-content-between">
+        <!-- Logo Section -->
+        <div class="col-md-2 col-6">
+          <img
+            src="{% file_asset_url 'positief_wonen_logo' %}"
+            alt="positief_wonen_logo"
+            class="img-fluid"
+            style="max-width: 80px; max-height: 80px"
+          />
+        </div>
+        <!-- login Button -->
+        <div class="col-md-auto col-6">
+          <a
+            href="/login"
+            class="btn btn-primary btn-sm"
+            role="button"
+            aria-pressed="true"
+            style="font-size: smaller"
+            >Log in</a
+          >
+        </div>
+      </div>
+    </div>
+
+    <!-- Fullscreen centered iframe -->
+    <div class="d-flex justify-content-center align-items-center vh-100">
+      <iframe
+        src="https://player.vimeo.com/video/756814765?background=1&amp;autoplay=1&amp;loop=1&amp;autopause=0&amp;muted=1"
+        frameborder="0"
+        allow="autoplay; fullscreen"
+        allowfullscreen=""
+        class="w-100 h-100"
+        style="border: none;"
+      ></iframe>
+    </div>
+    
+    <!-- Two-column layout -->
+    <div class="container content my-5 px-5">
+      <div class="row">
+        <!-- First Column (70%) -->
+        <div class="col-lg-7 col-md-12 column-text">
+          <p><b>
+            Als W-installateur krijgen jij en jouw eventuele buitendienst steeds meer vragen over verduurzaming. Met snel advies op maat inclusief bijbehorende offertes kom je als bedrijf gelijk goed beslagen ten ijs. Ook op onverwachte momenten zoals bij een kapotte cv-ketel die vervangen moet worden.
+            </b></p>
+          <p>
+            Herkenbaar? Steeds vaker (lastige) vragen van je klanten over verduurzaming zorgen voor onnodig veel tijdverlies en klussen die niet doorgaan!
+          </p>
+          <p>
+            Je moet de klant in veel gevallen snel kunnen overtuigen met het juiste (totaal) advies op maat. Direct voorrekenen wat het kost, hoeveel besparing het oplevert en op welke subsidie men kan rekenen. Uiteraard zonder open eindjes over te laten zodat je klantvertrouwen creëert en jouw klant meteen weet waar hij of zij aan toe is. Een flinke uitdaging, maar dit zijn wel de ingrediënten die je klant nodig heeft om direct of in ieder geval op zeer korte termijn je plan te accepteren. Ook bij onverwachte CV-vervanging wil men bovendien weten of de keuze die ze nu gaan maken, bijdraagt aan verdere verduurzaming in de toekomst.
+          </p>
+        </div>
+
+        <!-- Second Column (30%) -->
+        <div class="col-lg-5 col-md-12 text-center">
+          <img
+            src="https://assets.bettyblocks.com/9851bc7ef3ed45578f665019dd7a2b4c_assets/files/inschrijven-tablet"
+            alt="inschrijven-tablet"
+            class="img-fluid"
+          />
+        </div>
+      </div>
+    </div>
+
+    <!-- New Two-column layout (50%-50%) -->
+    <div class="container content my-5 px-5">
+      <div class="row">
+        <!-- First Column (50%) -->
+        <div class="col-lg-6 col-md-12 column-text">
+          <p><b>WDWA Offerte- en Duurzaam adviessoftware</b></p>
+          <p>
+            De WDWA webapp adviseert als jouw persoonlijke assistent tijdens de inventarisatie bij je klant wat jij als installateur kan doen aan verduurzaming. Maar ook wordt er voor je klant een compleet duurzaam advies rapport gegenereerd zonder dat je daar uren tijd aan spendeert en inclusief alle bijbehorende offertes. Je voegt indien nodig met 1 druk op de knop nog de ontbrekende onderdelen of werkzaamheden toe aan de offerte en het complete plaatje staat klaar om je klant te overtuigen. Zo ben je dus niet alleen meer installateur, maar ook duurzaamheidsadviseur voor jouw klanten!
+          </p>
+          <p><b>Maak razendsnel offertes voor alle klussen</b></p>
+          <p>
+            Ook voor bijvoorbeeld loodgieters werkzaamheden, een badkamerrenovatie of het installeren van airco kan je heel eenvoudig en razendsnel ‘on the job’ maatwerk offertes maken. Terug op de zaak (of thuis) heb je er geen omkijken meer naar, hooguit voer je een laatste controle uit. Je kunt projecten ook vooraf al aanmaken en klaarzetten voor je buitendienst die op locatie de rest doet.
+          </p>
+        </div>
+
+        <!-- Second Column (50%) -->
+        <div class="col-lg-6 col-md-12 column-text">
+          <p><b>De kracht van WDWA</b></p>
+          <p>
+            De klant krijgt dezelfde dag al inzicht in de kosten, subsidies en besparingen zodat men direct een beslissing kan nemen. De klant kan offertes digitaal ondertekenen waarna jij deze meteen als opdracht in je systeem hebt staan. Op dat moment staat zelfs de bijbehorende bestellijst al voor je klaar. Met WDWA bespaar je echt 80% op de administratieve werkzaamheden en kan er direct gehandeld worden met de klant, ook bij CV-storing.
+          </p>
+          <p><b>Nieuwsgierig geworden?</b></p>
+          <p>
+            Registreer je vandaag nog om kennis te maken met WDWA tijdens een gratis proefperiode van 30 dagen. Een WDWA adviseur regelt de software samen met jou in en geeft je een training zodat je het systeem optimaal kunt gebruiken. Voor meer informatie <a href="https://www.wdwa.nl/download-de-brochure/" target="_blank" rel="noopener noreferrer" style="color: rgb(207, 208, 85);">download</a> je hier de brochure.
+          </p>
+          <p>
+            Wil je liever direct een afspraak maken met onze buitendienst bij jou op locatie? Bel dan Rob Jansen <a href="tel:06-14586701" style="color: rgb(207, 208, 85);">0614586701</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <hr class="my-5 bg-primary" style="height: 5px;" />
+    <div class="container px-5">
+      <h3 class="text-center">Overtuiging, het juiste (totaal) advies op maat, klantvertrouwen, gemak, efficiëntie, enorme tijdwinst en dus snelheid is wat de WDWA webapp je brengt en wat essentieel is om maximaal te scoren op verduurzaam opdrachten.</h3>
+    </div>
+
+  	<form >
+      <div class="container-fluid content mt-5 bg-primary p-5">
+        <div class="m-5">
+        <div class="row my-3">
+          <div class="col-12 text-white">
+			<h4>Registreer je direct en gebruik de software de eerste maand volledig gratis zonder beperkingen.</h4>        
+          </div>
+          <div class="col-12 text-white">
+			<i class="bi bi-person-circle" style="font-size: 80px; color: rgb(207, 208, 85);"></i>
+          </div>
+        </div>
+        <div class="row mb-3">
+          <div class="col-lg-6 col-md-12">
+            <div class="form-floating">
+              <input type="text" class="form-control form-control-sm" placeholder="Bedrijfsnaam*" style="background: transparent; border: none; border-bottom: 1px solid white; color: white;" required />
+              <label for="Bedrijfsnaam*">Bedrijfsnaam*</label>
+            </div>
+          </div>
+        </div>
+        <div class="row mb-3">
+          <div class="col-12 text-white mt-4">Bedrijfsgegevens</div>
+        </div>
+        <div class="row mb-3">
+          <div class="col-lg-6 col-md-12">
+            <div class="form-floating">
+              <input type="text" class="form-control form-control-sm" placeholder="Postcode*" style="background: transparent; border: none; border-bottom: 1px solid white; color: white;" required />
+              <label for="Postcode*">Postcode*</label>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-12">
+            <div class="form-floating">
+              <input type="text" class="form-control form-control-sm" placeholder="Huisnummer*" style="background: transparent; border: none; border-bottom: 1px solid white; color: white;" required />
+              <label for="Huisnummer*">Huisnummer*</label>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-12">
+            <div class="form-floating">
+              <input type="text" class="form-control form-control-sm" placeholder="Toevoeging*" style="background: transparent; border: none; border-bottom: 1px solid white; color: white;" />
+              <label for="Toevoeging">Toevoeging</label>
+            </div>
+          </div>
+        </div>
+        <div class="row mb-3">
+          <div class="col-lg-6 col-md-12">
+            <div class="form-floating">
+              <input type="text" class="form-control form-control-sm" placeholder="Straat" style="background: transparent; border: none; border-bottom: 1px solid white; color: white;" autocomplete="new-password" autocomplete="off" />
+              <label for="Straat">Straat</label>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6">
+            <div class="form-floating">
+              <input type="text" class="form-control form-control-sm" placeholder="Plaats" style="background: transparent; border: none; border-bottom: 1px solid white; color: white;" autocomplete="new-password" autocomplete="off" />
+              <label for="Plaats">Plaats</label>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6">
+            <div class="form-floating">
+              <input type="text" class="form-control form-control-sm" placeholder="Land" style="background: transparent; border: none; border-bottom: 1px solid white; color: white;" autocomplete="new-password" autocomplete="off" />
+              <label for="Land">Land</label>
+            </div>
+          </div>
+        </div>
+        <div class="row mb-3">
+          <div class="col-lg-6 col-md-12">
+            <div class="form-floating">
+              <input type="email" class="form-control form-control-sm" placeholder="E-mailadres" style="background: transparent; border: none; border-bottom: 1px solid white; color: white;" autocomplete="new-password" autocomplete="off" />
+              <label for="E-mailadres">E-mailadres</label>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6">
+            <div class="form-floating">
+              <input type="text" class="form-control form-control-sm" placeholder="Telefoon*" style="background: transparent; border: none; border-bottom: 1px solid white; color: white;" autocomplete="new-password" autocomplete="off" required />
+              <label for="Telefoon*">Telefoon*</label>
+            </div>
+          </div>
+        </div>
+        <div class="row mb-3">
+          <div class="col-lg-6 col-md-6">
+            <div class="form-floating">
+              <input type="text" class="form-control form-control-sm" placeholder="GLN-nummer" style="background: transparent; border: none; border-bottom: 1px solid white; color: white;" autocomplete="new-password" autocomplete="off" />
+              <label for="GLN-nummer">GLN-nummer</label>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6">
+            <div class="form-floating">
+              <input type="text" class="form-control form-control-sm" placeholder="BTW-nummer" style="background: transparent; border: none; border-bottom: 1px solid white; color: white;" autocomplete="new-password" autocomplete="off" />
+              <label for="BTW-nummer">BTW-nummer</label>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6">
+            <div class="form-floating">
+              <input type="text" class="form-control form-control-sm" placeholder="IBAN*" style="background: transparent; border: none; border-bottom: 1px solid white; color: white;" autocomplete="new-password" autocomplete="off" required />
+              <label for="IBAN*">IBAN*</label>
+            </div>
+          </div>
+        </div>
+        <div class="row mb-3">
+          <div class="col-lg-6 col-md-12">
+            <div class="form-floating">
+              <input type="text" class="form-control form-control-sm" placeholder="Website" style="background: transparent; border: none; border-bottom: 1px solid white; color: white;" autocomplete="new-password" autocomplete="off" />
+              <label for="Website">Website</label>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6">
+            <div class="form-floating">
+              <input type="text" class="form-control form-control-sm" placeholder="KvK-nummer*" style="background: transparent; border: none; border-bottom: 1px solid white; color: white;" autocomplete="new-password" autocomplete="off" required />
+              <label for="KvK-nummer*">KvK-nummer*</label>
+            </div>
+          </div>
+        </div>
+        <div class="row my-3">
+          <div class="col-12 text-white mt-4">Gegevens gebruiker</div>
+        </div>
+        <div class="row mb-3">
+          <div class="col-lg-6 col-md-12">
+            <div class="form-floating">
+              <input type="text" class="form-control form-control-sm" placeholder="Naam*" style="background: transparent; border: none; border-bottom: 1px solid white; color: white;" autocomplete="new-password" autocomplete="off" required />
+              <label for="Naam*">Naam*</label>
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-12">
+            <div class="form-floating">
+              <input type="text" class="form-control form-control-sm" placeholder="E-mailadres*" style="background: transparent; border: none; border-bottom: 1px solid white; color: white;" autocomplete="new-password" autocomplete="off" required />
+              <label for="E-mailadres*">E-mailadres*</label>
+            </div>
+          </div>
+        </div>
+        <div class="row mb-3">
+          <div class="col-lg-6 col-md-12">
+            <div class="form-floating">
+              <input type="password" class="form-control form-control-sm" placeholder="Wachtwoord*" style="background: transparent; border: none; border-bottom: 1px solid white; color: white;" autocomplete="new-password" autocomplete="off" required />
+              <label for="Wachtwoord*">Wachtwoord*</label>
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-12">
+            <div class="form-floating">
+              <input type="text" class="form-control form-control-sm" placeholder="Herhaal wachtwoord*" style="background: transparent; border: none; border-bottom: 1px solid white; color: white;" autocomplete="new-password" autocomplete="off" required />
+              <label for="Herhaal wachtwoord*">Herhaal wachtwoord*</label>
+            </div>
+          </div>
+        </div>
+        <div class="row my-3">
+          <div class="col-12 text-white mt-4">Mede mogelijk gemaakt door</div>
+        </div>
+        <div class="row mb-3">
+          <div class="col-lg-6 col-md-12">
+            <div class="form-floating">
+              <input type="text" class="form-control form-control-sm" placeholder="Accountmanager" style="background: transparent; border: none; border-bottom: 1px solid white; color: white;" autocomplete="new-password" autocomplete="off" />
+              <label for="Accountmanager">Accountmanager</label>
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-12">
+            <div class="form-floating">
+              <input type="text" class="form-control form-control-sm" placeholder="Bedrijfsnaam" style="background: transparent; border: none; border-bottom: 1px solid white; color: white;" autocomplete="new-password" autocomplete="off" />
+              <label for="Bedrijfsnaam">Bedrijfsnaam</label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="container-fluid content mt-5 p-5">
+      <div class="row my-3">
+        {% for license in licenses %}
+          <div class="card" style="width: 18rem;">
+            <div class="card-header">
+              Featured
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </form>
+
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.slim.min.js" integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{% javascript_url 'custom.js' %}"></script>
+    <script>feather.replace();</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.0/html2pdf.bundle.min.js"></script>
+  </body>
+</html>

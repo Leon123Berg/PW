@@ -1,0 +1,60 @@
+<div class="card-footer d-flex justify-content-between">
+    <!-- Pagination (prev) -->
+    <ul
+      class="list-pagination-prev pagination pagination-tabs card-pagination"
+    >
+      <li
+        class="page-item {% if page_number == previous_page %}disabled{% endif %}"
+      >
+        <a
+          class="page-link {% if page_number == previous_page %}disabled{% endif %} ps-0 pe-4 border-end"
+          href="?page={{ previous_page }}"
+        >
+          <i data-feather="arrow-left"></i> Vorige
+        </a>
+      </li>
+    </ul>
+  
+    <!-- Pagination -->
+    <ul class="pagination mb-0">
+      {% for i in (range_start..range_end) %}
+      <li class="page-item {% if page_number == i %}active{% endif %}">
+        <a
+          class="page-link"
+          href="?page={{ i }}"
+          >{{ i }}</a
+        >
+      </li>
+      {% endfor %}
+    </ul>
+    <!-- Pagination (next) -->
+    <ul
+      class="list-pagination-next pagination pagination-tabs card-pagination"
+    >
+      <li
+        class="page-item {% if page_number == next_page %}disabled{% endif %}"
+      >
+        <a
+          class="{% if page_number == next_page %}disabled{% endif %} page-link ps-4 pe-0 border-start"
+          href="?page={{ next_page }}"
+        >
+          Volgende <i data-feather="arrow-right"></i>
+        </a>
+      </li>
+    </ul>
+    <div class="d-none">
+      <table>
+        <tbody>
+          <tr>
+            <td>
+              <input
+                type="text"
+                name="{{page}}"
+                value="{% if page_number %} {{page}} {% else %} 0 {% endif %}"
+              />
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>

@@ -1,0 +1,391 @@
+<div class="container-fluid p-8 border">
+  <div class="row align-items-center">
+    <div class="col-12 text-end">
+     <b>Rapportnummer:</b><span id="projectId"> {{ project.id }}</span>
+    </div>
+  </div>
+  <div class="row align-items-center">
+	  <div class="col-12 col-md-8 text-primary">
+      <h2><b>Isolatie check</b></h2>
+    </div>
+	</div>
+  <div class="row">
+    <div class="col-12">
+      <p>
+        Een volledig niet geïsoleerde woning die volledig geïsoleerd wordt, kan 70% besparing op de stookkosten opleveren (afhankelijk van je stookgedrag). Op basis van beschikbare data wordt hieronder de oorspronkelijke isolatiestaat van de woning getoond. Controleer per onderdeel of dit nog steeds klopt en corrigeer handmatig waar nodig. De tabel onderaan het systeem toont direct de verwachte werkzaamheden, kosten en besparing. De juiste isolatiestaat is ook bepalend voor de keuze van duurzaam verwarmen straks!
+      </p>
+    </div>
+  </div>
+</div>
+
+
+<div class="container-fluid bg-primary text-white align-items-center">
+  <div class="row">
+    <div class="col-12">
+      <div class="row p-5" style="background-color: #203b50">
+        <div id="isolatieCheckSmileys" class="col-7">
+          <h4><b>Controleer of deze isolatie status nog steeds klopt </b></h4>
+        </div>
+        <div class="col-5">
+          <h4><b>Opmerking</b></h4>
+        </div>
+      </div>
+
+      <!-- Dak smiley -->
+      <div class="row p-5 pt-7" id="dakRow" style="background-color: #24445d" value="Dak isolatie">
+        <div class="col-3 col-md-3 my-auto">Dak</div>
+        <div class="col-3 col-md text-center">
+          <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill={% if module.dak == 'Slecht' %} "red" {% else %} "white" {% endif %} class="bi bi-emoji-frown daksmileys" viewBox="0 0 16 16" value="0" id="daksmiley0">
+            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+            <path
+              d="M4.285 12.433a.5.5 0 0 0 .683-.183A3.498 3.498 0 0 1 8 10.5c1.295 0 2.426.703 3.032 1.75a.5.5 0 0 0 .866-.5A4.498 4.498 0 0 0 8 9.5a4.5 4.5 0 0 0-3.898 2.25.5.5 0 0 0 .183.683zM7 6.5C7 7.328 6.552 8 6 8s-1-.672-1-1.5S5.448 5 6 5s1 .672 1 1.5zm4 0c0 .828-.448 1.5-1 1.5s-1-.672-1-1.5S9.448 5 10 5s1 .672 1 1.5z" />
+          </svg>
+        </div>
+        <div class="col-3 col-md text-center">
+          <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill={% if module.dak == 'Matig' %} "orange" {% else %} "white" {% endif %} class="bi bi-emoji-neutral daksmileys" viewBox="0 0 16 16" value="1" id="daksmiley1">
+            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+            <path
+              d="M4 10.5a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 0-1h-7a.5.5 0 0 0-.5.5zm3-4C7 5.672 6.552 5 6 5s-1 .672-1 1.5S5.448 8 6 8s1-.672 1-1.5zm4 0c0-.828-.448-1.5-1-1.5s-1 .672-1 1.5S9.448 8 10 8s1-.672 1-1.5z" />
+          </svg>
+        </div>
+        <div class="col-3 col-md text-center">
+          <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill={% if module.dak == 'Goed' %} "Green" {% else %} "white" {% endif %} class="bi bi-emoji-smile daksmileys" viewBox="0 0 16 16" value="2" id="daksmiley2">
+            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+            <path
+              d="M4.285 9.567a.5.5 0 0 1 .683.183A3.498 3.498 0 0 0 8 11.5a3.498 3.498 0 0 0 3.032-1.75.5.5 0 1 1 .866.5A4.498 4.498 0 0 1 8 12.5a4.498 4.498 0 0 1-3.898-2.25.5.5 0 0 1 .183-.683zM7 6.5C7 7.328 6.552 8 6 8s-1-.672-1-1.5S5.448 5 6 5s1 .672 1 1.5zm4 0c0 .828-.448 1.5-1 1.5s-1-.672-1-1.5S9.448 5 10 5s1 .672 1 1.5z" />
+          </svg>
+        </div>
+        <div class="col col-md-5 my-auto py-2 tekst">
+          <!-- commentaar op isolatie -->
+          {% if module.dak == 'Slecht' %}
+            Isolatie is slecht.
+          {% elsif module.dak == 'Matig' %} 
+            Isolatie is matig.
+          {% elsif module.dak == 'Goed' %}
+            Isolatie is goed.
+          {% endif %}
+        </div>
+      </div>
+      <div class="row px-5" style="background-color: #24445d">
+        <div class="col-md-12">
+          <hr style="color: #f1f1f1" />
+        </div>
+      </div>
+
+      {% if spouwmuur_aanwezig %}
+        <!-- Muren smiley -->
+        <div class="row p-5" id="murenRow" style="background-color: #24445d" value="Spouwmuur isolatie">
+          <div class="col-3 col-md-3 my-auto">Spouwmuren</div>
+          <div class="col-3 col-md text-center">
+            <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill={% if module.muren == 'Slecht' %} "red" {% else %} "white" {% endif %}
+              class="bi bi-emoji-frown muursmileys" viewBox="0 0 16 16" value="0" id="muursmiley0">
+              <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+              <path
+                d="M4.285 12.433a.5.5 0 0 0 .683-.183A3.498 3.498 0 0 1 8 10.5c1.295 0 2.426.703 3.032 1.75a.5.5 0 0 0 .866-.5A4.498 4.498 0 0 0 8 9.5a4.5 4.5 0 0 0-3.898 2.25.5.5 0 0 0 .183.683zM7 6.5C7 7.328 6.552 8 6 8s-1-.672-1-1.5S5.448 5 6 5s1 .672 1 1.5zm4 0c0 .828-.448 1.5-1 1.5s-1-.672-1-1.5S9.448 5 10 5s1 .672 1 1.5z" />
+            </svg>
+          </div>
+          <div class="col-3 col-md text-center">
+            <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill={% if module.muren == 'Matig' %} "orange" {% else %} "white" {% endif %}
+              class="bi bi-emoji-neutral muursmileys" viewBox="0 0 16 16" value="1" id="muursmiley1">
+              <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+              <path
+                d="M4 10.5a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 0-1h-7a.5.5 0 0 0-.5.5zm3-4C7 5.672 6.552 5 6 5s-1 .672-1 1.5S5.448 8 6 8s1-.672 1-1.5zm4 0c0-.828-.448-1.5-1-1.5s-1 .672-1 1.5S9.448 8 10 8s1-.672 1-1.5z" />
+            </svg>
+          </div>
+          <div class="col-3 col-md text-center">
+            <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill={% if module.muren == 'Goed' %} "green" {% else %} "white" {% endif %}
+              class="bi bi-emoji-smile muursmileys" viewBox="0 0 16 16" value="2" id="muursmiley2">
+              <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+              <path
+                d="M4.285 9.567a.5.5 0 0 1 .683.183A3.498 3.498 0 0 0 8 11.5a3.498 3.498 0 0 0 3.032-1.75.5.5 0 1 1 .866.5A4.498 4.498 0 0 1 8 12.5a4.498 4.498 0 0 1-3.898-2.25.5.5 0 0 1 .183-.683zM7 6.5C7 7.328 6.552 8 6 8s-1-.672-1-1.5S5.448 5 6 5s1 .672 1 1.5zm4 0c0 .828-.448 1.5-1 1.5s-1-.672-1-1.5S9.448 5 10 5s1 .672 1 1.5z" />
+            </svg>
+          </div>
+          <div class="col col-md-5 my-auto py-2 tekst">
+            <!-- commentaar op isolatie -->
+            {% if module.muren == 'Slecht' %}
+              Isolatie is slecht.
+            {% elsif module.muren == 'Matig' %}
+              Isolatie is matig.
+            {% elsif module.muren == 'Goed' %}
+              Isolatie is goed.
+            {% endif %}
+          </div>
+        </div>
+        <div class="row px-5" style="background-color: #24445d">
+          <div class="col-md-12">
+            <hr style="color: #f1f1f1" />
+          </div>
+        </div>
+      {% endif %}
+
+      {% if kruipruimte_aanwezig %}
+        <!-- Vloer smiley -->
+        <div class="row p-5" id="vloerRow" style="background-color: #24445d" value="Vloer isolatie">
+          <div class="col-3 col-md-3 my-auto">Vloer</div>
+          <div class="col-3 col-md text-center">
+            <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill={% if module.vloer == 'Slecht' %} "red" {% else %} "white" {% endif %}
+              class="bi bi-emoji-frown vloersmileys" viewBox="0 0 16 16" value="0" id="vloersmiley0">
+              <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+              <path
+                d="M4.285 12.433a.5.5 0 0 0 .683-.183A3.498 3.498 0 0 1 8 10.5c1.295 0 2.426.703 3.032 1.75a.5.5 0 0 0 .866-.5A4.498 4.498 0 0 0 8 9.5a4.5 4.5 0 0 0-3.898 2.25.5.5 0 0 0 .183.683zM7 6.5C7 7.328 6.552 8 6 8s-1-.672-1-1.5S5.448 5 6 5s1 .672 1 1.5zm4 0c0 .828-.448 1.5-1 1.5s-1-.672-1-1.5S9.448 5 10 5s1 .672 1 1.5z" />
+            </svg>
+          </div>
+          <div class="col-3 col-md text-center">
+            <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill={% if module.vloer == 'Matig' %} "orange" {% else %} "white" {% endif %}
+              class="bi bi-emoji-neutral vloersmileys" viewBox="0 0 16 16" value="1" id="vloersmiley1">
+              <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+              <path
+                d="M4 10.5a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 0-1h-7a.5.5 0 0 0-.5.5zm3-4C7 5.672 6.552 5 6 5s-1 .672-1 1.5S5.448 8 6 8s1-.672 1-1.5zm4 0c0-.828-.448-1.5-1-1.5s-1 .672-1 1.5S9.448 8 10 8s1-.672 1-1.5z" />
+            </svg>
+          </div>
+          <div class="col-3 col-md text-center">
+            <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill={% if module.vloer == 'Goed' %} "green" {% else %} "white" {% endif %}
+              class="bi bi-emoji-smile vloersmileys" viewBox="0 0 16 16" value="2" id="vloersmiley2">
+              <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+              <path
+                d="M4.285 9.567a.5.5 0 0 1 .683.183A3.498 3.498 0 0 0 8 11.5a3.498 3.498 0 0 0 3.032-1.75.5.5 0 1 1 .866.5A4.498 4.498 0 0 1 8 12.5a4.498 4.498 0 0 1-3.898-2.25.5.5 0 0 1 .183-.683zM7 6.5C7 7.328 6.552 8 6 8s-1-.672-1-1.5S5.448 5 6 5s1 .672 1 1.5zm4 0c0 .828-.448 1.5-1 1.5s-1-.672-1-1.5S9.448 5 10 5s1 .672 1 1.5z" />
+            </svg>
+          </div>
+          <div class="col col-md-5 my-auto py-2 tekst">
+            <!-- commentaar op isolatie -->
+            {% if module.vloer == 'Slecht' %}
+              Isolatie is slecht.
+            {% elsif module.vloer == 'Matig' %}
+              Isolatie is matig.
+            {% elsif module.vloer == 'Goed' %}
+              Isolatie is goed.
+            {% endif %}
+          </div>
+        </div>
+        <div class="row px-5" style="background-color: #24445d">
+          <div class="col-md-12">
+            <hr style="color: #f1f1f1" />
+          </div>
+        </div>
+      {% endif %}
+
+      <!-- Ramen smiley -->
+      <div class="row p-5" id="ramenRow" style="background-color: #24445d" value="Raam isolatie">
+        <div class="col-3 col-md-3 my-auto">Ramen</div>
+        <div class="col-3 col-md text-center">
+          <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill={% if module.ramen == 'Slecht' %} "red" {% else %} "white" {% endif %}
+            class="bi bi-emoji-frown raamsmileys" viewBox="0 0 16 16" value="0" id="raamsmiley0">
+            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+            <path
+              d="M4.285 12.433a.5.5 0 0 0 .683-.183A3.498 3.498 0 0 1 8 10.5c1.295 0 2.426.703 3.032 1.75a.5.5 0 0 0 .866-.5A4.498 4.498 0 0 0 8 9.5a4.5 4.5 0 0 0-3.898 2.25.5.5 0 0 0 .183.683zM7 6.5C7 7.328 6.552 8 6 8s-1-.672-1-1.5S5.448 5 6 5s1 .672 1 1.5zm4 0c0 .828-.448 1.5-1 1.5s-1-.672-1-1.5S9.448 5 10 5s1 .672 1 1.5z" />
+          </svg>
+        </div>
+        <div class="col-3 col-md text-center">
+          <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill={% if module.ramen == 'Matig' %} "orange" {% else %} "white" {% endif %}
+            class="bi bi-emoji-neutral raamsmileys" viewBox="0 0 16 16" value="1" id="raamsmiley1">
+            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+            <path
+              d="M4 10.5a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 0-1h-7a.5.5 0 0 0-.5.5zm3-4C7 5.672 6.552 5 6 5s-1 .672-1 1.5S5.448 8 6 8s1-.672 1-1.5zm4 0c0-.828-.448-1.5-1-1.5s-1 .672-1 1.5S9.448 8 10 8s1-.672 1-1.5z" />
+          </svg>
+        </div>
+        <div class="col-3 col-md text-center">
+          <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill={% if module.ramen == 'Goed' %} "green" {% else %} "white" {% endif %}
+            class="bi bi-emoji-smile raamsmileys" viewBox="0 0 16 16" value="2" id="raamsmiley2">
+            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+            <path
+              d="M4.285 9.567a.5.5 0 0 1 .683.183A3.498 3.498 0 0 0 8 11.5a3.498 3.498 0 0 0 3.032-1.75.5.5 0 1 1 .866.5A4.498 4.498 0 0 1 8 12.5a4.498 4.498 0 0 1-3.898-2.25.5.5 0 0 1 .183-.683zM7 6.5C7 7.328 6.552 8 6 8s-1-.672-1-1.5S5.448 5 6 5s1 .672 1 1.5zm4 0c0 .828-.448 1.5-1 1.5s-1-.672-1-1.5S9.448 5 10 5s1 .672 1 1.5z" />
+          </svg>
+        </div>
+        <div class="col col-md-5 my-auto py-2 tekst">
+          <!-- commentaar op isolatie -->
+          {% if module.ramen == 'Slecht' %}
+            Isolatie is slecht.
+          {% elsif module.ramen == 'Matig' %}
+            Isolatie is matig.
+          {% elsif module.ramen == 'Goed' %}
+            Isolatie is goed.
+          {% endif %}
+        </div>
+      </div>
+      <div id="ramenRowDivider" class="row px-5" style="background-color: #24445d">
+        <div class="col-md-12">
+          <hr style="color: #24445d" />
+        </div>
+      </div>
+
+      <!-- Ventilatie Smiley hidden-->
+      <div class="row p-5 pb-7" id="ventilatieRow" style="background-color: #24445d" value="Ventilatie" hidden>
+        <div class="col-3 col-md-3 my-auto">Ventilatie</div>
+        <div class="col-3 col-md text-center">
+          <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill={% if module.ventilatie == 'Slecht' %} "red" {% else %} "white" {% endif %}
+            class="bi bi-emoji-frown ventilatiesmileys" viewBox="0 0 16 16" value="0" id="ventilatiesmiley0">
+            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+            <path
+              d="M4.285 12.433a.5.5 0 0 0 .683-.183A3.498 3.498 0 0 1 8 10.5c1.295 0 2.426.703 3.032 1.75a.5.5 0 0 0 .866-.5A4.498 4.498 0 0 0 8 9.5a4.5 4.5 0 0 0-3.898 2.25.5.5 0 0 0 .183.683zM7 6.5C7 7.328 6.552 8 6 8s-1-.672-1-1.5S5.448 5 6 5s1 .672 1 1.5zm4 0c0 .828-.448 1.5-1 1.5s-1-.672-1-1.5S9.448 5 10 5s1 .672 1 1.5z" />
+          </svg>
+        </div>
+        <div class="col-3 col-md text-center">
+          <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill={% if module.ventilatie == 'Matig' %} "orange" {% else %} "white" {% endif %}
+            class="bi bi-emoji-neutral ventilatiesmileys" viewBox="0 0 16 16" value="1" id="ventilatiesmiley1">
+            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+            <path
+              d="M4 10.5a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 0-1h-7a.5.5 0 0 0-.5.5zm3-4C7 5.672 6.552 5 6 5s-1 .672-1 1.5S5.448 8 6 8s1-.672 1-1.5zm4 0c0-.828-.448-1.5-1-1.5s-1 .672-1 1.5S9.448 8 10 8s1-.672 1-1.5z" />
+          </svg>
+        </div>
+        <div class="col-3 col-md text-center">
+          <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill={% if module.ventilatie == 'Goed' %} "green" {% else %} "white" {% endif %}
+            class="bi bi-emoji-smile ventilatiesmileys" viewBox="0 0 16 16" value="2" id="ventilatiesmiley1">
+            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+            <path
+              d="M4.285 9.567a.5.5 0 0 1 .683.183A3.498 3.498 0 0 0 8 11.5a3.498 3.498 0 0 0 3.032-1.75.5.5 0 1 1 .866.5A4.498 4.498 0 0 1 8 12.5a4.498 4.498 0 0 1-3.898-2.25.5.5 0 0 1 .183-.683zM7 6.5C7 7.328 6.552 8 6 8s-1-.672-1-1.5S5.448 5 6 5s1 .672 1 1.5zm4 0c0 .828-.448 1.5-1 1.5s-1-.672-1-1.5S9.448 5 10 5s1 .672 1 1.5z" />
+          </svg>
+        </div>
+        <div class="col col-md-5 my-auto py-2 tekst" style="border-color: #41617a">
+          <!-- commentaar op isolatie -->
+          {% if module.ventilatie == 'Slecht' %}
+            Ventilatie is slecht.
+          {% elsif module.ventilatie == 'Matig' %}
+            Ventilatie is matig.
+          {% elsif module.ventilatie == 'Goed' %}
+            Ventilatie is goed.
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid p-8 border">
+  <div class="row align-items-center">
+	  <div class="col-12 col-md-8 text-primary">
+      <h3><b>Subsidies bij isolatie</b></h3>
+    </div>
+	</div>
+  <div class="row">
+    <div class="col-12">
+      <p>
+        Heb je plannen om je huis te isoleren? Met de ISDE-subsidie kan je een aardig deel van de kosten terugkrijgen. De isolatiesubsidie is een vast bedrag per vierkante meter.
+          <br><br>
+        Met de ISDE ontvang je in 2024 tot 30% subsidie terug op de kosten van de verduurzamingsmaatregel. Hierbij geldt de voorwaarde dat je minimaal 2 maatregelen uitvoert, dit mag ook in combinatie met een warmtepomp. Bij 1 maatregel halveert de subsidie naar 15%.
+        <br><br>
+        Je kunt van onderstaande subsidiebedragen uitgaan.
+      </p>
+      <ul>
+        <li>Spouwmuurisolatie: € 8 per m² met een minimum van 10 m²</li>
+        <li>Dakisolatie: € 30 per m² met een minimum van 20 m²</li>
+        <li>Zoldervloerisolatie: € 8 per m² met een minimum van 20 m²</li>
+        <li>Gevelisolatie: € 38 per m² met een minimum van 10 m²</li>
+        <li>Vloerisolatie: € 11 per m² met een minimum van 20 m²</li>
+        <li>Bodemisolatie: € 6 per m² met een minimum van 20 m²</li>
+        <li>HR++ glas in bestaand kozijn: € 46 per m² met een minimum van 8 m²</li>
+        <li>Triple glas in isolerend kozijn: € 131 per m² met een minimum van 8 m²</li>
+        <li>Je krijgt extra subsidie (gem 6%) als je biobased isolatiemateriaal gebruikt</li>
+        <li>Voor monumenten zijn de eisen wat versoepeld in 2024</li>
+      </ul>    
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid p-7" style="background-color: #f1f1f1">
+  <h4 class="row pt-5"><b>Te nemen maatregel</b></h4>
+
+  <table class="table">
+    <thead>
+      <tr class="py-3">
+        <th class="col-2">Maatregel</th>
+        <th class="col-2">Richtprijs</th>
+        <th class="col-2">Subsidie</th>
+        <th class="col-2">Besparing per jaar</th>
+        <th class="col-2">Terugverdientijd in jaren</th>
+        <th class="col-2">Offerte?</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Dak isoleren Row -->
+      {% assign percentage = 0 | plus: woningtype.besparing_dakisolatie %}
+      {% assign gas = gasprijs.waarde | times: module1.gas_per_jaar %}
+      {% assign besparing_per_jaar = gas | times: percentage | divided_by: 100 %}
+      {% if module.isoleer_dak and (module.isoleer_muren or module.isoleer_ramen or module.isoleer_vloer) %}
+        {% assign investering = pw_module_3.dakisolatie_kosten | minus: subsidie_berekening.dak_max %}
+        {% assign subsidie = subsidie_berekening.dak_max %}
+      {% else %}
+        {% assign investering = pw_module_3.dakisolatie_kosten | minus: subsidie_berekening.dak_min %}
+        {% assign subsidie = subsidie_berekening.dak_min %}
+      {% endif %}
+      {% assign terugverdientijd = investering | divided_by: besparing_per_jaar %}
+      <tr id="dakSection" style="display: none;">
+        <td>Dak isoleren</td>
+        <td>{% if pw_module_3.dakisolatie_kosten %}{{ pw_module_3.dakisolatie_kosten | to_currency: "€ ", 0,".", "," }}{% else %}€0{% endif %}</td>
+        <td>{{ subsidie | to_currency: "€ ", 0,".", "," }}</td>
+        <td>{{ besparing_per_jaar | to_currency: "€ ", 0,".", "," }}</td>
+        <td>{{ terugverdientijd | round: 1 }}</td>
+        <td><input type="checkbox" class="form-check-input offerteChkBoxs" id="dakOfferteChkB" {% if offerte.dak %}checked{% endif %}></td>
+      </tr>
+
+      <!-- Spouwmuren isoleren Row -->
+      {% assign percentage = 0 | plus: woningtype.besparing_spouwmuurisolatie %}
+      {% assign gas = gasprijs.waarde | times: module1.gas_per_jaar %}
+      {% assign besparing_per_jaar = gas | times: percentage | divided_by: 100 %}
+      {% if module.isoleer_muren and (module.isoleer_dak or module.isoleer_ramen or module.isoleer_vloer) %}
+        {% assign investering = pw_module_3.muurisolatie_kosten | minus: subsidie_berekening.spouwmuur_max %}
+        {% assign subsidie = subsidie_berekening.spouwmuur_max %}
+      {% else %}
+        {% assign investering = pw_module_3.muurisolatie_kosten | minus: subsidie_berekening.spouwmuur_min %}
+        {% assign subsidie = subsidie_berekening.spouwmuur_min %}
+      {% endif %}
+      {% assign terugverdientijd = investering | divided_by: besparing_per_jaar %}
+      <tr id="muurSection" style="display: none;">
+        <td>Spouwmuren isoleren</td>
+        <td>{% if pw_module_3.muurisolatie_kosten %}{{ pw_module_3.muurisolatie_kosten | to_currency: "€ ", 0,".", "," }}{% else %}€0{% endif %}</td>
+        <td>{{ subsidie | to_currency: "€ ", 0,".", "," }}</td>
+        <td>{{ besparing_per_jaar | to_currency: "€ ", 0,".", "," }}</td>
+        <td>{{ terugverdientijd | round: 1 }}</td>
+        <td><input type="checkbox" class="form-check-input offerteChkBoxs" id="murenOfferteChkB" {% if offerte.muren %}checked{% endif %}></td>
+      </tr>
+
+      <!-- Vloer isoleren Row -->
+      {% assign percentage = 0 | plus: woningtype.besparing_vloerisolatie %}
+      {% assign gas = gasprijs.waarde | times: module1.gas_per_jaar %}
+      {% assign besparing_per_jaar = gas | times: percentage | divided_by: 100 %}
+      {% if module.isoleer_vloer and (module.isoleer_dak or module.isoleer_muren or module.isoleer_ramen) %}
+        {% assign investering = pw_module_3.vloerisolatie_kosten | minus: subsidie_berekening.vloer_max %}
+        {% assign subsidie = subsidie_berekening.vloer_max %}
+      {% else %}
+        {% assign investering = pw_module_3.vloerisolatie_kosten | minus: subsidie_berekening.vloer_min %}
+        {% assign subsidie = subsidie_berekening.vloer_min %}
+      {% endif %}
+      {% assign terugverdientijd = investering | divided_by: besparing_per_jaar %}
+      <tr id="vloerSection" style="display: none;">
+        <td>Vloer isoleren</td>
+        <td>{% if pw_module_3.vloerisolatie_kosten %}{{ pw_module_3.vloerisolatie_kosten | to_currency: "€ ", 0,".", "," }}{% else %}€0{% endif %}</td>
+        <td>{{ subsidie | to_currency: "€ ", 0,".", "," }}</td>
+        <td>{{ besparing_per_jaar | to_currency: "€ ", 0,".", "," }}</td>
+        <td>{{ terugverdientijd | round: 1 }}</td>
+        <td><input type="checkbox" class="form-check-input offerteChkBoxs" id="vloerOfferteChkB" {% if offerte.vloer %}checked{% endif %}></td>
+      </tr>
+
+      <!-- Ramen vervangen Row -->
+      {% assign besparing_per_jaar = glasbesparing.waarde | times: woningtype.raam_oppervlakte %}
+      {% if module.isoleer_ramen and (module.isoleer_dak or module.isoleer_muren or module.isoleer_vloer) %}
+        {% assign investering = pw_module_3.raamisolatie_kosten | minus: subsidie_berekening.raamwerk_max %}
+        {% assign subsidie = subsidie_berekening.raamwerk_max %}
+      {% else %}
+        {% assign investering = pw_module_3.raamisolatie_kosten | minus: subsidie_berekening.raamwerk_min %}
+        {% assign subsidie = subsidie_berekening.raamwerk_min %}
+      {% endif %}
+      {% assign terugverdientijd = investering | divided_by: besparing_per_jaar %}
+      <tr id="raamSection" style="display: none;">
+        <td>Ramen vervangen</td>
+        <td>{% if pw_module_3.raamisolatie_kosten %}{{ pw_module_3.raamisolatie_kosten | to_currency: "€ ", 0,".", "," }}{% else %}€0{% endif %}</td>
+        <td>{{ subsidie | to_currency: "€ ", 0,".", "," }}</td>
+        <td>{{ besparing_per_jaar | to_currency: "€ ", 0,".", "," }}</td>
+        <td>{{ terugverdientijd | round: 1 }}</td>
+        <td><input type="checkbox" class="form-check-input offerteChkBoxs" id="ramenOfferteChkB" {% if offerte.ramen %}checked{% endif %}></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+  <div class="container-fluid p-4 d-flex d-flex justify-content-between">
+  <a href="/positiefwonen/project/huidige-situatie/{{project.uuid}}">
+    <button type="button" class="btn btn-primary">Vorige pagina</button>
+  </a>
+  <a href="/positiefwonen/project/duurzaam-verwarmen/{{project.uuid}}">
+    <button type="button" class="btn btn-primary">Volgende pagina</button>
+  </a>
+</div>

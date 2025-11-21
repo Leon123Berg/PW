@@ -1,0 +1,1456 @@
+<div id="your-page-content">
+  <div class="container-fluid p-8 border">
+    <!-- Dit is de spinner / loader animatie -->
+    {% include 'spinnerLoader' %}
+    <!-- Einde: Dit is de spinner / loader animatie -->
+    <div class="row align-items-center">
+      <div class="col-12 text-end">
+        <b>Rapportnummer:</b><span id="projectId"> {{ project.id }}</span>
+      </div>
+    </div>
+    <div class="row align-items-center">
+      <div class="col-12 col-md-8">
+        <h2 id="duurzaamWoonAdviesRapport" class="text-primary"><b>Persoonlijk Duurzaamheidsadvies</b></h2>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <table class="table">
+          <tbody>
+            <tr>
+              <td class="w-20"><b style="color:#ced037;">Persoonlijk</b></td>
+              <td class="w-80">Dit Persoonlijk Duurzaamheidsavies, inclusief de geboden duurzame oplossingen is met de grootst mogelijke nauwkerigheid samengesteld en afgestemd op jouw huidige situatie.</td>
+            </tr>
+            <tr>
+              <td class="w-20"><b  style="color:#ced037;">Richtprijzen</b></td>
+              <td class="w-80">We willen benadrukken dat er binnen dit advies gebruik wordt gemaakt van externe databronnen. De getoonde besparingen en opbrengsten zijn aannemelijk en deels wetenschapplijk berekend, maar blijven een schatting en sterk afhanelijk van jouw leefomstandigheden en gedrag. De oplossingen zijn gebaseerd op richtprijzen, passend bij de geschatte maten en waardes.</td>
+            </tr>
+            <tr class="border-white">
+              <td class="w-20"><b style="color:#ced037;">Meer zekerheid</b></td>
+              <td class="w-80">Wil je meer zekerheid of dit advies passend is voor jouw persoonlijke situatie (gekozen oplossingen, kosten en besparingen), dan is het zeer aan te bevelen een duurzaamheidsadviseur 	uit te nodigen voor een deskundige en onafhankelijke beoordeling van jouw situatie ter plaatse. Hij neemt jouw woning in detail op en maakt richtprijsoffertes voor de door jou gewenste duurzame oplossingen.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  
+  <div class="container-fluid p-8" style="background-color: #f1f1f1">
+    <div class="row">
+      <div class="col-md-12 text-primary">
+        <h2><b>Samenvatting inventarisatie</b></h2>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6 pb-4">
+        Drie belangrijkste redenen om te verduurzamen
+      </div>
+      <div class="col-md-6">
+        <div class="row">
+          <div class="col-4 col-md-4"
+          {% if meer_wooncomfort == nil %}
+            hidden
+          {% endif %}
+          >
+            <!-- Liquid code in bovenstaande dom -->
+            <div class="row">
+              <div class="col-md-12 bg-secondary mx-auto rounded d-flex justify-content-center align-items-center"
+                style="width: 120px; height: 120px">
+                <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="120px" height="120px" viewBox="0 0 300 300"
+                  preserveAspectRatio="xMidYMid meet">
+                  <g transform="translate(0.000000,300.000000) scale(0.100000,-0.100000)" fill="#203B4F" stroke="none">
+                    <path d="M1519 2402 c-14 -9 -87 -68 -161 -129 -75 -62 -139 -113 -142 -113
+                                -3 0 -6 24 -6 53 0 29 -5 58 -12 65 -8 8 -53 12 -135 12 -111 0 -123 -2 -133
+                                -19 -6 -12 -10 -92 -10 -190 l0 -170 -185 -153 c-160 -132 -185 -157 -183
+                                -178 5 -43 49 -39 106 9 27 23 51 41 55 41 4 0 8 -168 9 -372 l3 -373 359 0
+                                c331 0 360 1 370 18 8 12 8 22 0 35 -10 15 -39 17 -333 20 l-321 2 0 374 0
+                                373 100 83 100 83 0 168 0 169 65 0 65 0 0 -78 c0 -81 9 -102 43 -102 10 0 94
+                                62 185 138 92 76 173 141 179 146 8 4 40 -15 82 -49 78 -63 114 -70 119 -24 3
+                                22 -11 38 -88 103 -51 42 -95 76 -98 76 -4 0 -19 -8 -33 -18z" />
+                    <path d="M1517 2113 c-13 -12 -8 -378 5 -391 8 -8 66 -12 193 -12 l181 0 97
+                                99 c53 54 97 104 97 111 0 7 -41 55 -92 106 l-92 94 -191 0 c-105 0 -195 -3
+                                -198 -7z m405 -130 l68 -67 -62 -63 -62 -63 -138 0 -138 0 0 130 0 130 132 0
+                                132 0 68 -67z" />
+                    <path d="M977 1613 c-13 -12 -8 -378 5 -391 8 -8 65 -12 189 -12 148 0 180 3
+                                193 16 13 13 16 45 16 189 0 95 -3 180 -6 189 -5 14 -32 16 -198 16 -106 0
+                                -196 -3 -199 -7z m321 -195 l3 -128 -126 0 -125 0 0 130 0 131 123 -3 122 -3
+                                3 -127z" />
+                    <path d="M1517 1613 c-13 -12 -8 -378 5 -391 9 -9 89 -12 296 -12 l285 0 93
+                                92 c71 69 94 98 94 118 0 19 -23 48 -88 113 l-87 87 -296 0 c-163 0 -299 -3
+                                -302 -7z m610 -125 c35 -34 63 -67 63 -72 0 -6 -26 -36 -57 -68 l-57 -58 -243
+                                0 -243 0 0 130 0 130 237 0 237 0 63 -62z" />
+                    <path d="M1517 1113 c-13 -12 -8 -378 5 -391 9 -9 112 -12 401 -12 l390 0 93
+                                92 c59 58 94 99 94 113 0 13 -35 55 -93 113 l-92 92 -396 0 c-218 0 -399 -3
+                                -402 -7z m823 -128 l64 -65 -64 -65 -64 -65 -343 0 -343 0 0 130 0 130 343 0
+                                343 0 64 -65z" />
+                  </g>
+                </svg>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12 mx-auto pt-4 text-center">
+                Meer wooncomfort
+              </div>
+            </div>
+          </div>
+          <div class="col-4 col-md-4"
+            {% if gezonder_wonen == nil %}
+              hidden
+            {% endif %}
+          >
+            <!-- Liquid code in bovenstaande dom -->
+            <div class="row">
+              <div class="col-md-12 bg-secondary mx-auto rounded d-flex justify-content-center align-items-center"
+                style="width: 120px; height: 120px">
+                <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="120px" height="120px" viewBox="0 0 300 300"
+                  preserveAspectRatio="xMidYMid meet">
+          
+                  <g transform="translate(0.000000,300.000000) scale(0.100000,-0.100000)" fill="#203B4F" stroke="none">
+                    <path d="M1328 2253 l-153 -126 -6 58 c-4 31 -13 61 -20 66 -22 14 -243 11
+                                -257 -3 -8 -8 -12 -65 -12 -188 l0 -177 -190 -157 c-104 -86 -190 -163 -190
+                                -171 0 -17 27 -45 43 -45 7 0 37 20 67 45 l55 45 5 -372 5 -373 359 -3 c405
+                                -3 424 0 561 68 117 57 205 77 205 45 0 -31 39 -127 68 -166 109 -148 331
+                                -181 532 -80 55 28 55 28 54 74 0 63 -59 180 -124 245 -55 56 -164 116 -201
+                                110 -19 -2 -24 -9 -24 -32 0 -30 1 -31 78 -67 77 -37 162 -141 191 -235 15
+                                -50 -210 -94 -311 -60 -85 28 -150 99 -178 194 -5 18 -2 22 15 22 36 0 127
+                                -37 185 -76 63 -41 87 -39 93 8 7 55 -185 146 -329 155 l-77 6 42 55 c40 52
+                                46 56 127 79 189 54 305 136 364 256 62 125 57 257 -15 430 -52 126 -167 301
+                                -268 409 -66 71 -93 64 -99 -25 -6 -97 -78 -229 -210 -381 -116 -134 -141
+                                -169 -175 -236 -29 -57 -33 -74 -33 -146 0 -73 4 -88 35 -150 32 -62 38 -69
+                                65 -69 42 0 43 26 5 106 -54 116 -34 202 80 340 192 231 258 327 291 422 7 20
+                                16 37 20 37 4 0 29 -30 56 -67 193 -269 254 -476 182 -627 -42 -91 -179 -188
+                                -310 -221 l-27 -7 34 91 c44 117 86 291 88 361 1 51 -1 55 -23 58 -13 2 -27 0
+                                -32 -5 -6 -6 -20 -62 -34 -125 -53 -259 -136 -439 -255 -558 -41 -42 -98 -88
+                                -126 -102 -102 -55 -143 -60 -486 -65 l-318 -5 1 378 0 379 72 57 c40 32 87
+                                71 105 87 l32 30 0 166 0 166 63 -3 62 -3 3 -80 c3 -90 17 -114 56 -93 11 6
+                                96 74 188 150 l168 139 112 -100 c62 -56 120 -101 128 -101 21 0 40 20 40 41
+                                0 23 -254 249 -280 249 -10 0 -88 -57 -172 -127z" />
+                    <path d="M932 1578 c-17 -17 -17 -369 0 -386 17 -17 369 -17 386 0 17 17 17
+                                369 0 386 -8 8 -66 12 -193 12 -127 0 -185 -4 -193 -12z m318 -193 l0 -125
+                                -125 0 -125 0 0 125 0 125 125 0 125 0 0 -125z" />
+                  </g>
+                </svg>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12 mx-auto pt-4 text-center">
+                Gezonder wonen
+              </div>
+            </div>
+          </div>
+          <div class="col-4 col-md-4"
+            {% if onafhankelijk_en_solidair == nil %}
+              hidden
+            {% endif %}
+          >
+            <!-- Liquid code in bovenstaande dom -->
+            <div class="row">
+              <div class="col-md-12 bg-secondary mx-auto rounded d-flex justify-content-center align-items-center"
+                style="width: 120px; height: 120px">
+                <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="120px" height="120px" viewBox="0 0 300 300"
+                  preserveAspectRatio="xMidYMid meet">
+          
+                  <g transform="translate(0.000000,300.000000) scale(0.100000,-0.100000)" fill="#203B4F" stroke="none">
+                    <path d="M1246 2414 c-150 -33 -289 -103 -389 -194 -30 -27 -58 -50 -61 -50
+                                  -3 0 -6 24 -6 54 0 71 -34 108 -68 74 -17 -17 -17 -249 0 -266 8 -8 53 -12
+                                  135 -12 112 0 123 2 133 20 8 14 8 26 0 40 -9 17 -21 20 -78 20 l-67 1 55 50
+                                  c158 145 345 207 592 197 155 -7 272 -42 406 -123 93 -56 116 -60 128 -22 5
+                                  17 -2 28 -31 54 -53 46 -205 119 -300 144 -107 29 -348 36 -449 13z" />
+                    <path d="M2165 2164 c-68 -54 -186 -86 -395 -108 -169 -18 -230 -34 -297 -79
+                                  -55 -38 -121 -130 -153 -214 -48 -125 -35 -301 30 -406 28 -45 29 -50 18 -92
+                                  -13 -49 -23 -56 -33 -25 -19 61 -183 242 -250 278 -26 13 -55 -2 -55 -28 0
+                                  -10 45 -63 100 -118 55 -55 100 -105 100 -110 0 -15 -81 -25 -132 -17 -144 24
+                                  -230 144 -262 363 l-6 42 123 0 c78 0 144 -6 181 -15 67 -18 89 -9 84 34 -3
+                                  23 -11 28 -73 44 -92 23 -370 21 -386 -3 -24 -36 16 -253 65 -348 76 -149 227
+                                  -223 390 -193 47 9 62 8 68 -1 20 -32 49 -150 55 -223 6 -85 14 -105 44 -105
+                                  32 0 42 36 35 134 -20 277 123 561 373 741 43 31 52 42 49 64 -8 65 -98 19
+                                  -230 -117 -72 -75 -136 -160 -173 -232 l-18 -35 -21 45 c-17 37 -21 65 -21
+                                  150 0 97 2 110 32 172 17 37 50 87 72 111 61 66 115 85 289 103 178 18 237 29
+                                  321 60 35 13 65 24 67 24 9 0 3 -83 -11 -157 -56 -295 -209 -505 -410 -563
+                                  -22 -6 -76 -14 -119 -18 -60 -5 -81 -11 -90 -25 -9 -15 -6 -22 14 -39 22 -18
+                                  33 -20 97 -14 265 24 449 189 546 491 46 142 79 384 57 424 -13 25 -47 27 -75
+                                  5z" />
+                    <path d="M632 1897 c-18 -21 -49 -109 -68 -192 -26 -113 -24 -282 4 -399 65
+                                  -261 242 -486 477 -603 133 -67 267 -97 425 -96 223 0 389 54 550 178 30 24
+                                  64 52 74 64 11 11 23 21 27 21 4 0 9 -30 11 -67 3 -66 4 -68 30 -71 38 -5 48
+                                  25 48 146 0 141 -1 142 -144 142 -124 0 -150 -9 -144 -51 3 -22 7 -24 71 -27
+                                  48 -2 67 -7 64 -15 -7 -24 -134 -118 -212 -157 -124 -62 -215 -82 -375 -82
+                                  -162 0 -249 19 -385 86 -384 190 -567 664 -403 1046 23 54 17 90 -16 90 -13 0
+                                  -28 -6 -34 -13z" />
+                    <path d="M2270 1785 c-10 -12 -9 -31 4 -95 31 -153 17 -316 -38 -464 -27 -72
+                                  -26 -92 7 -102 15 -5 26 0 38 15 23 28 65 158 80 245 22 130 -5 383 -42 407
+                                  -20 13 -35 11 -49 -6z" />
+                  </g>
+                </svg>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12 mx-auto pt-4 text-center">
+                Onafhankelijk en solidair
+              </div>
+            </div>
+          </div>
+          <div class="col-4 col-md-4"
+            {% if lagere_energielasten == nil %}
+              hidden
+            {% endif %}
+          >
+            <!-- Liquid code in bovenstaande dom -->
+            <div class="row">
+              <div class="col-md-12 bg-secondary mx-auto rounded d-flex justify-content-center align-items-center"
+                style="width: 120px; height: 120px">
+                <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="120px" height="120px" viewBox="0 0 300 300"
+                  preserveAspectRatio="xMidYMid meet">
+                  <g transform="translate(0.000000,300.000000) scale(0.100000,-0.100000)" fill="#203B4F" stroke="none">
+                    <path d="M934 2610 c-245 -64 -443 -264 -500 -507 -21 -87 -21 -239 0 -326 59
+                                  -251 269 -456 524 -513 91 -20 259 -15 344 10 61 18 77 40 64 84 -9 28 -38 32
+                                  -93 16 -27 -8 -84 -18 -129 -21 -166 -12 -328 50 -449 171 -235 237 -235 596
+                                  0 831 317 317 847 181 981 -252 21 -69 28 -188 15 -256 -12 -65 -4 -91 29
+                                  -102 54 -17 80 48 80 199 0 103 -28 216 -77 316 -56 113 -189 243 -303 298
+                                  -47 22 -115 47 -151 56 -89 22 -244 20 -335 -4z" />
+                    <path d="M1982 2458 c-18 -18 -15 -66 6 -76 9 -5 49 -12 87 -15 188 -16 297
+                                  -101 313 -244 l5 -48 -41 38 c-48 42 -83 48 -106 15 -9 -12 -16 -27 -16 -32 0
+                                  -5 44 -53 97 -107 74 -76 103 -99 123 -99 21 0 48 22 119 95 92 95 105 120 75
+                                  149 -25 26 -56 18 -100 -25 l-42 -41 -11 69 c-30 174 -128 277 -303 318 -77
+                                  18 -189 20 -206 3z" />
+                    <path d="M1032 2272 c-85 -31 -163 -121 -186 -214 -5 -24 -11 -28 -41 -28 -31
+                                  0 -35 -3 -35 -25 0 -21 5 -25 30 -25 27 0 30 -3 30 -30 0 -27 -3 -30 -30 -30
+                                  -25 0 -30 -4 -30 -25 0 -22 4 -25 34 -25 31 0 34 -3 41 -37 32 -179 221 -279
+                                  391 -208 31 13 34 17 28 42 -4 15 -8 29 -9 31 -2 2 -28 -4 -60 -13 -122 -36
+                                  -234 29 -260 153 l-7 32 146 0 146 0 0 25 0 25 -150 0 -150 0 0 30 0 30 150 0
+                                  150 0 0 25 0 25 -145 0 c-160 0 -157 -2 -126 65 46 102 144 146 252 113 44
+                                  -13 45 -12 54 23 5 21 2 27 -21 38 -49 22 -144 24 -202 3z" />
+                    <path d="M1712 1532 c-203 -253 -375 -469 -382 -481 -9 -18 -8 -27 5 -47 15
+                                  -24 17 -24 180 -24 91 0 165 -3 165 -7 0 -4 -36 -145 -80 -314 -44 -169 -80
+                                  -316 -80 -328 0 -25 35 -50 62 -43 27 7 808 983 808 1010 0 47 -20 52 -196 52
+                                  -90 0 -164 1 -164 3 0 1 29 132 65 291 36 158 65 294 65 301 0 8 -7 21 -16 29
+                                  -41 41 -45 37 -432 -442z m246 -24 c-26 -117 -48 -216 -48 -220 0 -4 7 -14 16
+                                  -22 13 -13 42 -16 156 -16 118 0 139 -2 135 -14 -9 -22 -519 -657 -524 -652
+                                  -2 2 22 105 54 230 45 177 56 230 47 243 -10 16 -30 18 -158 21 -81 1 -146 6
+                                  -144 11 5 13 503 630 509 630 3 1 -16 -95 -43 -211z" />
+                    <path d="M772 986 c-95 -96 -106 -120 -74 -149 29 -26 55 -20 97 23 34 35 41
+                                  38 47 23 3 -10 7 -30 7 -46 1 -15 10 -52 20 -82 54 -152 185 -239 383 -252 98
+                                  -7 118 1 118 47 0 39 -14 46 -102 54 -197 17 -298 96 -314 246 l-7 55 45 -42
+                                  c50 -49 80 -54 104 -19 20 31 18 34 -89 145 -115 120 -115 120 -235 -3z" />
+                  </g>
+                </svg>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12 mx-auto pt-4 text-center">
+                Lagere energielasten
+              </div>
+            </div>
+          </div>
+          <div class="col-4 col-md-4"
+            {% if goed_voor_het_milieu == nil %}
+              hidden
+            {% endif %}
+          >
+            <!-- Liquid code in bovenstaande dom -->
+            <div class="row">
+              <div class="col-md-12 bg-secondary mx-auto rounded d-flex justify-content-center align-items-center"
+                style="width: 120px; height: 120px">
+                <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="120px" height="120px" viewBox="0 0 300 300"
+                  preserveAspectRatio="xMidYMid meet">
+                
+                  <g transform="translate(0.000000,300.000000) scale(0.100000,-0.100000)" fill="#203B4F" stroke="none">
+                    <path d="M1346 2274 c-139 -43 -232 -160 -257 -326 -11 -65 -10 -86 5 -146
+                                l17 -71 -26 -52 -27 -52 -23 66 c-12 36 -39 95 -59 131 -40 71 -140 186 -161
+                                186 -15 0 -45 -27 -45 -40 0 -5 25 -37 55 -71 30 -35 68 -89 85 -121 29 -55
+                                70 -160 70 -181 0 -6 -28 -8 -70 -5 -186 14 -267 132 -278 407 l-5 134 84 -6
+                                c107 -9 194 -31 242 -63 50 -33 91 -30 95 7 8 66 -201 138 -404 139 -88 0 -89
+                                -1 -89 -189 1 -226 36 -335 137 -426 59 -53 119 -75 224 -82 l82 -6 6 -51 c3
+                                -28 6 -84 6 -124 0 -206 110 -431 275 -565 244 -197 585 -219 862 -56 81 48
+                                202 171 251 254 22 39 53 106 69 150 25 72 27 94 28 215 0 151 -11 191 -75
+                                264 -53 60 -102 80 -195 81 -99 0 -153 -19 -241 -86 l-64 -48 -36 24 c-19 13
+                                -55 27 -80 31 -82 12 -108 0 -208 -95 -50 -49 -97 -86 -104 -84 -18 7 -42 -16
+                                -42 -38 0 -10 14 -34 31 -54 l32 -36 -82 -83 c-44 -46 -81 -88 -81 -94 0 -14
+                                29 -42 43 -42 6 0 49 37 94 82 l83 83 52 -52 52 -52 -82 -84 c-45 -47 -82 -89
+                                -82 -95 0 -14 29 -42 43 -42 6 0 49 37 94 82 l82 81 36 -32 c48 -42 88 -40 93
+                                4 2 22 25 52 82 110 43 44 83 90 89 102 25 49 6 159 -35 204 -13 15 -11 20 25
+                                52 58 53 117 79 186 84 81 6 138 -23 180 -91 26 -43 30 -59 33 -145 10 -265
+                                -135 -499 -383 -617 -435 -208 -945 119 -945 606 0 289 189 546 467 635 84 27
+                                100 42 83 76 -13 23 -30 24 -101 3 -113 -34 -227 -103 -315 -190 l-54 -54 -6
+                                27 c-11 42 13 160 43 216 72 130 196 172 391 131 42 -9 123 -26 179 -38 l103
+                                -21 -30 -64 c-106 -223 -303 -371 -496 -371 -60 0 -74 -8 -74 -40 0 -32 14
+                                -40 73 -40 151 1 321 84 439 215 83 93 183 287 176 343 -3 24 -8 28 -58 35
+                                -30 5 -128 24 -217 43 -177 37 -268 42 -347 18z m477 -765 c32 -16 106 -90
+                                123 -121 8 -15 14 -44 14 -64 0 -32 -9 -46 -80 -118 l-79 -81 -116 115 -115
+                                115 82 82 c71 71 87 83 116 83 18 0 43 -5 55 -11z" />
+                  </g>
+                </svg>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12 mx-auto pt-4 text-center">
+                Goed voor het milieu
+              </div>
+            </div>
+          </div>
+          <div class="col-4 col-md-4"
+            {% if stijgende_woningwaarde == nil %}
+              hidden
+            {% endif %}
+          >
+            <!-- Liquid code in bovenstaande dom -->
+            <div class="row">
+              <div class="col-md-12 bg-secondary mx-auto rounded d-flex justify-content-center align-items-center"
+                style="width: 120px; height: 120px">
+                <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="120px" height="120px" viewBox="0 0 300 300"
+                  preserveAspectRatio="xMidYMid meet">
+                
+                  <g transform="translate(0.000000,300.000000) scale(0.100000,-0.100000)" fill="#203B4F" stroke="none">
+                    <path d="M1227 2345 c-97 -80 -178 -145 -181 -145 -3 0 -6 24 -6 53 0 31 -6
+                                61 -16 75 -14 21 -22 22 -145 22 -72 0 -139 -5 -150 -10 -18 -10 -19 -23 -19
+                                -215 l0 -204 -94 -78 c-51 -43 -148 -123 -214 -178 -100 -83 -122 -105 -122
+                                -127 0 -17 7 -31 20 -38 24 -13 46 -3 111 52 25 21 48 38 52 38 4 0 7 -188 7
+                                -418 0 -312 3 -421 12 -430 17 -17 809 -17 826 0 7 7 12 21 12 33 0 44 -5 45
+                                -392 45 l-368 0 0 428 0 429 91 73 c50 41 104 86 120 101 l29 27 0 191 0 191
+                                70 0 70 0 0 -79 c0 -181 17 -178 275 34 110 91 202 165 205 165 3 0 41 -29 85
+                                -65 82 -67 104 -76 124 -51 27 33 8 63 -93 145 -54 45 -106 81 -116 81 -10 0
+                                -97 -65 -193 -145z" />
+                    <path d="M1705 2000 c-99 -21 -177 -63 -212 -116 -16 -25 -18 -147 -14 -690 1
+                                -147 14 -172 104 -217 71 -35 217 -63 247 -47 21 11 29 63 11 74 -5 3 -42 10
+                                -82 16 -42 6 -98 22 -129 38 l-55 27 -3 66 -3 66 67 -23 c88 -29 179 -40 199
+                                -24 8 7 15 25 15 41 0 31 6 28 -118 53 -40 9 -92 26 -115 38 l-42 23 -3 68 -3
+                                68 31 -16 c39 -20 151 -45 205 -45 46 0 65 14 65 46 0 31 -17 41 -90 48 -74 9
+                                -164 38 -191 62 -15 13 -19 31 -19 77 0 52 2 58 18 52 148 -59 418 -59 531 0
+                                l31 16 0 -44 c0 -48 13 -67 47 -67 35 0 43 29 43 152 0 94 -3 118 -20 145 -25
+                                42 -108 89 -192 108 -72 16 -254 19 -323 5z m343 -105 c69 -24 107 -58 93 -84
+                                -14 -25 -83 -57 -159 -71 -77 -16 -238 -8 -309 14 -69 22 -112 58 -97 83 13
+                                23 88 61 145 73 70 14 266 5 327 -15z" />
+                    <path d="M760 1561 c-6 -12 -10 -99 -10 -213 0 -159 3 -198 16 -216 15 -22 20
+                                -22 223 -22 189 0 209 2 224 18 15 16 17 46 17 216 0 117 -4 205 -10 217 -10
+                                18 -23 19 -230 19 -207 0 -220 -1 -230 -19z m378 -213 l-3 -143 -142 -3 -143
+                                -3 0 146 0 145 145 0 146 0 -3 -142z" />
+                    <path d="M2178 1529 c-100 -13 -177 -46 -225 -94 l-43 -42 0 -283 0 -283 43
+                                -42 c135 -134 530 -137 671 -4 l41 38 0 290 0 290 -30 31 c-16 18 -46 40 -66
+                                50 -86 45 -263 67 -391 49z m257 -101 c89 -19 151 -60 140 -90 -16 -42 -164
+                                -88 -285 -88 -120 0 -268 45 -284 86 -22 58 165 119 324 107 30 -2 78 -9 105
+                                -15z m-145 -262 c129 0 153 3 218 25 l72 25 0 -56 c0 -47 -4 -60 -24 -79 -68
+                                -64 -302 -87 -441 -44 -98 31 -115 49 -115 122 l0 57 73 -25 c65 -23 87 -25
+                                217 -25z m-215 -213 c133 -48 344 -39 488 22 15 6 17 0 17 -52 0 -68 -9 -80
+                                -80 -112 -134 -59 -396 -41 -477 32 -19 17 -23 31 -23 80 0 52 2 58 18 52 9
+                                -4 35 -14 57 -22z" />
+                  </g>
+                </svg>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12 mx-auto pt-4 text-center">
+                Stijgende woningwaarde
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 pt-5 pb-5 text-primary">
+        <h2><b>Woonsituatie</b></h2>
+      </div>
+    </div>
+  
+    <div class="row pb-7">
+      <div class="col-md-3 col-sm-3 border-bottom border-light py-2 bg-primary text-white" style="display: flex; justify-content: left; align-items: center;">
+        Aantal bewoners
+      </div>
+      <div class="col-md-3 col-sm-3 border border-primary py-2 bg-white text-primary" style="display: flex; justify-content: left; align-items: center;">
+        {{ module1.inwoners }}
+      </div>
+      <div class="col-md-3 col-sm-3 border-bottom border-light py-2 bg-primary text-white" style="display: flex; justify-content: left; align-items: center;">
+        Verwarming woning
+      </div>
+      <div class="col-md-3 col-sm-3 border border-primary py-2 bg-white text-primary" style="display: flex; justify-content: left; align-items: center;">
+        {% if verwarmen_woning.size > 0 %}
+          {% for verwarming in verwarmen_woning %}
+            {{verwarming.beschrijving}}{% unless forloop.last %}, {% endunless -%}
+          {% endfor %}
+        {% else %}
+         Niks geselecteerd
+        {% endif %}
+      </div>
+  
+      <div class="col-md-2 col-sm-2 border-bottom border-light py-2 bg-primary text-white" style="display: flex; justify-content: left; align-items: center;">
+        Bouwjaar pand
+      </div>
+      <div class="col-md-1 col-sm-1 border-bottom border-left border-light py-2 bg-primary text-white" style="display: flex; justify-content: left; align-items: center;">
+        m2
+      </div>
+      <div class="col-md-2 col-sm-2 border-top border-bottom border-left border-primary py-2 bg-white text-primary" style="display: flex; justify-content: left; align-items: center;">
+        {{ module1.bouwjaar }}
+      </div>
+      <div class="col-md-1 col-sm-1 border-primary border-top border-bottom border-left py-2 bg-white text-primary" style="display: flex; justify-content: left; align-items: center;">
+        {{ module1.oppervlakte_woning }}
+      </div>
+      <div class="col-md-3 col-sm-3 border-bottom border-light py-2 bg-primary text-white" style="display: flex; justify-content: left; align-items: center;">
+        Verwarmen water
+      </div>
+      <div class="col-md-3 col-sm-3 border-primary border-right border-bottom border-top border-left py-2 bg-white text-primary" style="display: flex; justify-content: left; align-items: center;">
+        {{ module1.tapwater }}
+      </div>
+  
+      <div class="col-md-3 col-sm-3 border-bottom border-light py-2 bg-primary text-white" style="display: flex; justify-content: left; align-items: center;">
+        Type woning
+      </div>
+      <div class="col-md-3 col-sm-3 border border-light py-2 bg-white text-primary" style="display: flex; justify-content: left; align-items: center;">
+          {{ woningtype.woningtype }}
+      </div>
+      <div class="col-md-3 col-sm-3 border-bottom border-light py-2 bg-primary text-white" style="display: flex; justify-content: left; align-items: center;">
+        Ventilatie
+      </div>
+      <div class="col-md-3 col-sm-3 border border-primary py-2 bg-white text-primary" style="display: flex; justify-content: left; align-items: center;">
+        {% for ventilatie in ventilatie_woning %}
+          {{ventilatie.beschrijving}}{% unless forloop.last %}, {% endunless -%}
+        {% endfor %}
+      </div>
+  
+      <div class="col-md-3 col-sm-3 border-bottom border-light py-2 bg-primary text-white" style="display: flex; justify-content: left; align-items: center;">
+        Laadpaal gewenst
+      </div>
+      <div class="col-md-3 col-sm-3 border border-primary py-2 bg-white text-primary" style="display: flex; justify-content: left; align-items: center;">
+        {{ module1.laadpaal }}
+      </div>
+      <div class="col-md-3 col-sm-3 border-bottom border-light py-2 bg-primary text-white" style="display: flex; justify-content: left; align-items: center;">
+        Koken
+      </div>
+      <div class="col-md-3 col-sm-3 border border-primary py-2 bg-white text-primary" style="display: flex; justify-content: left; align-items: center;">
+        {{ module1.koken }}
+      </div>
+  
+      <div class="col-md-3 col-sm-3 border-bottom border-light py-2 bg-primary text-white" style="display: flex; justify-content: left; align-items: center;">
+        Zonnepanelen aanwezig
+      </div>
+      <div class="col-md-3 col-sm-3 border border-primary py-2 bg-white text-primary" style="display: flex; justify-content: left; align-items: center;">
+        {% if module1.aantal_zonnepanelen > 0 %}{{ module1.aantal_zonnepanelen }}{% else %}Momenteel niet aanwezig{% endif %}
+      </div>
+      <div class="col-md-3 col-sm-3 border-bottom border-light py-2 bg-primary text-white" style="display: flex; justify-content: left; align-items: center;">
+        Huidig energielabel
+      </div>
+      <div class="col-md-3 col-sm-3 border border-primary py-2 bg-white text-primary" style="display: flex; justify-content: left; align-items: center;">
+        {% if module1.huidig_energielabel != null %}{{ module1.huidig_energielabel }}{% else %}Onbekend{% endif %}
+      </div>
+    </div>
+
+    <!-- Huidig energieverbruik -->
+    <div class="row">
+      <div class="col-md-12 p-1 pb-3 text-primary">
+        <h2 class="ms-3"><b> Huidig energieverbruik </b></h2>
+      </div>
+    </div>
+    <div class="row bg-white">
+      <div class="col-md-6 border border-primary py-6 my-auto">
+        Elektra gebruik per jaar
+      </div>
+      <div class="col-md-2 border border-primary d-flex align-items-center">
+        <div class="input-group mb-1 w-100">
+          <div class="form-floating w-100">
+            <input
+              type="number"
+              class="form-control bg-white form-control-flush"
+              id="kwhInput"
+              min="0"
+              value="{{ module1.kwh_per_jaar | round: 0}}"
+              placeholder="Hoeveel"
+              disabled
+            />
+            <label for="kwhInput">kWh/jaar</label>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 border border-primary d-flex align-items-center">
+        <div class="input-group mb-1 w-100">
+          <div class="form-floating w-100">
+            <output
+              class="form-control form-control-flush text-end"
+              id="kwhOutput"
+              for="kwhOutput"
+              value="{{ module.kwh_bedrag_per_jaar | ceil }}"
+              >{{ module1.kwh_bedrag_per_jaar | ceil }}</output
+            >
+            <label for="kwhOutput">€/jaar</label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row bg-white">
+      <div class="col-md-6 border border-primary py-6 my-auto">
+        Gas gebruik per jaar
+      </div>
+      <div class="col-md-2 border border-primary d-flex align-items-center">
+        <div class="input-group mb-1 w-100">
+          <div class="form-floating w-100">
+            <input
+              type="number"
+              class="form-control bg-white form-control-flush"
+              id="gasInput"
+              min="0"
+              value="{{ module1.gas_per_jaar }}"
+              placeholder="Hoeveel"
+              disabled
+            />
+            <label for="gasInput">m3/jaar</label>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 border border-primary d-flex align-items-center">
+        <div class="input-group mb-1 w-100">
+          <div class="form-floating w-100">
+            <output
+              class="form-control form-control-flush text-end"
+              id="gasOutput"
+              for="gasOutput"
+              value="{{ module.gas_bedrag_per_jaar | ceil }}"
+              >{{ module1.gas_bedrag_per_jaar | ceil }}</output
+            >
+            <label for="gasOutput">€/jaar</label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <!-- First Column -->
+      <div
+        class="col-md-8 border-left border-light py-6 bg-primary text-white d-flex align-items-center"
+      >
+        <div class="input-group mb-1 w-100">
+          <div class="form-floating w-100">
+            <b>Totaal energieverbruik</b>
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="col-md-4 border-left border-light py-6 bg-primary text-white d-flex align-items-center"
+      >
+        <div class="input-group mb-1 w-100">
+          <div class="form-floating w-100">
+            <output
+              class="form-control form-control-flush bg-primary text-white text-end"
+              id="energieVerbruikOutput"
+              for="energieVerbruikOutput"
+              >{{ module1.totaal_bedrag_energieverbruik_per_jaar | ceil }}</output
+            >
+            <label for="energieVerbruikOutput">€/jaar</label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container-fluid px-8 bg-primary">
+    <div class="row">
+      <div class="col-9">
+        <!-- Row voor vinkje -->
+      </div>
+      <div class="col-2">
+        <img src="{% file_asset_url 'vinkje' %}" alt="vinkje" style="width: 200px"
+          class="position-absolute top-0 start-100 translate-middle" />
+      </div>
+      <div class="col-1"></div>
+    </div>
+  
+    <div class="row bg-primary text-white pb-5 pt-8">
+      <div class="col-md-12">
+        <h2><b>Jouw investering</b></h2>
+      </div>
+    </div>
+  </div>
+  <!-- Container ISOLATIE -->
+  
+  {% assign condition = false %} 
+    {% if module2.isoleer_dak %} 
+      {% assign condition = true %} 
+    {% elsif module2.isoleer_muren %} 
+      {% assign condition = true %} 
+    {% elsif module2.isoleer_vloer %} 
+      {% assign condition = true %} 
+    {% elsif module2.isoleer_ramen %} 
+      {% assign condition = true %} 
+    {% elsif module2.optimaliseer_ventilatie %} 
+      {% assign condition = true %} 
+    {% endif %} 
+  
+  {% if condition %}
+  
+  <div class="container-fluid px-8 bg-primary">
+    <div class="row text-white">
+      <div class="col-6 col-md-9 py-5"><b>Te nemen maatregelen</b></div>
+      <div class="col-6 col-md-3 border-left border-bottom border-light py-5 text-center"><b>Richtprijs</b></div>
+    </div>
+  </div>
+  
+  <div class="container-fluid px-8 bg-secondary">
+    <div class="row py-3 text-primary">
+      <div class="col-md-9">
+        <b>Isolatie</b>
+      </div>
+      <div class="col-md-3">
+      </div>
+    </div>
+  </div>
+  
+  <div class="container-fluid px-8 bg-primary">
+  {% if module2.isoleer_dak %}
+    <div class="row text-white">
+      <div class="col-6 col-md-9 border-bottom border-light py-5">Dak isoleren</div>
+      <div class="col-6 col-md-3 border-left border-bottom border-light py-5 text-center">
+        {{module3.dakisolatie_kosten | to_currency: "€ ", 0, ".", ","}}
+      </div>
+    </div>
+    {% endif %} 
+    {% if module2.isoleer_muren %}
+    <div class="row text-white">
+      <div class="col-6 col-md-9 border-bottom border-light py-5">
+        Spouwmuren isoleren
+      </div>
+      <div class="col-6 col-md-3 border-bottom border-left border-light py-5 text-center">
+        {{module3.muurisolatie_kosten | to_currency: "€ ", 0, ".", ","}}
+      </div>
+    </div>
+    {% endif %} 
+    {% if module2.isoleer_vloer %}
+    <div class="row text-white">
+      <div class="col-6 col-md-9 border-bottom border-light py-5">
+        Vloer isoleren
+      </div>
+      <div class="col-6 col-md-3 border-bottom border-left border-light py-5 text-center">
+        {{module3.vloerisolatie_kosten | to_currency: "€ ", 0, ".", ","}}
+      </div>
+    </div>
+    {% endif %} 
+    {% if module2.isoleer_ramen %}
+    <div class="row text-white">
+      <div class="col-6 col-md-9 border-bottom border-light py-5">
+        Glas vervangen
+      </div>
+      <div class="col-6 col-md-3 border-bottom border-left border-light text-center py-5">
+        {{module3.raamisolatie_kosten | to_currency: "€ ", 0, ".", ","}}
+      </div>
+    </div>
+    {% endif %}
+  </div>
+  <!-- Einde ISOLATIE -->
+  
+  {% endif %}
+  
+  <!-- Container ZONNEPANELEN EN DUURZAAM Verwarmen -->
+  
+  <div class="container-fluid px-8 bg-secondary">
+    <div class="row py-3 bg-secondary text-primary">
+      <div class="col-md-9">
+        <b>Duurzaam verwarmen</b>
+      </div>
+      <div class="col-md-3"></div>
+    </div>
+  </div>
+  <div class="container-fluid px-8" style="background: #24445d">
+    <div class="row text-white">
+      <div class="col-6 col-md-9 border-bottom border-light py-5">
+        Oplossing: {{ module3.pwoplossingen.type_oplossing }}
+      </div>
+      <div class="col-6 col-md-3 border-bottom border-left border-light py-5 text-center">
+        {{ oplossing_informatie.prijs | to_currency: "€ ", 0, ".", "," }}
+      </div>
+    </div>
+  </div>
+  {% if module1.vloerverwarming_aanwezig == false %}
+    <div class="container-fluid px-8" style="background: #24445d">
+      <div class="row text-white">
+        <div class="col-6 col-md-9 border-bottom border-light py-5">
+          Vloerverwarming
+        </div>
+        <div class="col-6 col-md-3 border-bottom border-left border-light py-5 text-center">
+          {{ module3.vloerverwarming_kosten | to_currency: "€ ", 0, ".", "," }}
+        </div>
+      </div>
+    </div>
+  {% endif %} 
+  <div class="container-fluid px-8 bg-secondary">
+    <div class="row py-3 text-primary">
+      <div class="col-md-9">
+        <b>Zonnepanelen</b>
+      </div>
+      <div class="col-md-3"></div>
+    </div>
+  </div>
+  <div class="container-fluid px-8" style="background: #24445d">
+    <div class="row text-white">
+      <div class="col-6 col-md-9 border-bottom border-light py-5">
+        Zonnepanelen
+      </div>
+      <div class="col-6 col-md-3 border-bottom border-left border-light py-5 text-center">
+        {{ module4.kosten | to_currency: "€ ", 0, ".", ","}}
+      </div>
+    </div>
+  </div>
+  <!-- einde zonnepanelen en ... -->
+  <!-- container totaal -->
+  <div class="container-fluid px-8 bg-primary">
+    <div class="row bg-primary text-white">
+      <div class="col-6 col-md-9 border-bottom border-light py-5">
+        Totale bruto investering
+      </div>
+      <div class="col-6 col-md-3 border-bottom border-left border-light py-5 text-center">
+        <span id="totBrutoInv">{{ module5.totale_bruto_investering | to_currency: "€ ", 0, ".",","}}</span>
+      </div>
+    </div>
+    <div class="row bg-primary text-white">
+      <div class="col-6 col-md-9 border-light py-5">
+        Schatting te ontvangen subsidie
+      </div>
+      <div class="col-6 col-md-3 border-left border-light py-5 text-center">
+        <span id="teOntvSub">{{ module5.schatting_te_ontvangen_subsidie | to_currency: "€ ", 0, ".",","}}</span>
+      </div>
+    </div>
+  </div>
+  <!-- einde totaal -->
+  <!-- container netto investering -->
+  <div class="container-fluid px-8 bg-secondary">
+    <div class="row bg-secondary text-primary">
+      <div class="col-6 col-md-9 py-5"><b>Totale netto investering</b></div>
+      <div class="col-6 col-md-3 border-left border-primary py-5 text-center">
+        <b><span id="totNettoInv">{{ module5.totale_netto_investering | to_currency: "€ ", 0, ".",","}}</span></b>
+      </div>
+    </div>
+  </div>
+  <!-- Einde netto investering -->
+  <!-- Container DIVIDER -->
+  <div class="container-fluid px-10 bg-primary">
+    <div class="row text-white py-3">
+      <div class="col-6 col-md-9 py-3"></div>
+      <div class="col-6 col-md-3 py-3"></div>
+    </div>
+  </div>
+  <!-- Einde DIVIDER -->
+  <!-- Jouw financiering -->
+  <div class="container-fluid p-8 text-primary border">
+    <div class="row pt-7">
+      <div class="col-md-12 pb-3">
+        <h2><b>Jouw financiering</b></h2>
+        <p>De benodigde investering kan worden gefinancierd met een hypothecaire- of persoonlijke lening. Jouw financieel adviseur helpt je graag bij de advisering van de 	vele verschillende mogelijkheden op dit vlak. Hieronder laten we indicatief zien wat de (bruto) lasten van deze mogelijke financiering zijn en verrekenen dit meteen met de behaalde besparing. Wel zo eerlijk! <br><br>
+          {% if financieringstabel != null %}Omdat jouw woning energielabel {{financieringstabel_huidig_label}} had en naar verwachting veranderd naar energielabel {{financieringstabel_nieuw_label}} kom je in aanmerking voor een extra financiering van {{ financieringstabel.extra_hypotheek | plus: financieringstabel.verduurzamingshypotheek | | to_currency: "€ ", 0, ".", ","}}.{% endif %}
+        </p>
+      </div>
+    </div>
+  
+    <div class="row justify-content-between d-flex align-items-end">
+      <div class="col-md-12 pb-7 ps-7 pe-7">
+        <div class="row">
+          <div class="col-8 py-5 border border-primary">
+            Totale investering
+          </div>
+          <div class="col-4 py-5 border border-primary">
+            {{ module5.totale_bruto_investering | to_currency: "€ ", 0, ".","," }}
+          </div>
+        </div>
+  
+        <div class="row">
+          <div class="col-8 py-5 border border-primary">
+            <b>Eigen inbreng</b>
+          </div>
+          <div class="col-4 py-2 border border-primary">
+            {% assign eigen_inbreng = customer.eigen_inbreng | to_currency: "€ ", 0, ".","," %}
+            <input 
+              style="background-color: #f1f1f1"
+              type="number" 
+              class="form-control" 
+              id="eigenInbreng" 
+              placeholder="€" 
+              value='{{customer.eigen_inbreng}}' 
+              min="0">
+          </div>
+        </div>
+  
+        <div class="row bg-primary text-white">
+          <div class="col-8 py-5 border border-primary">
+           <b>Te financieren</b> 
+          </div>
+          <div class="col-4 py-5 border border-primary" id="te_financieren">
+            {% if customer.eigen_inbreng %}
+              {% assign minus = customer.eigen_inbreng %}
+            {% else %}
+              {% assign minus = 0 %}
+            {% endif %} 
+            {% assign value = module5.totale_bruto_investering | minus: minus %}
+            {{ value | to_currency: "€ ", 0, ".","," }}
+          </div>
+        </div>
+  
+        <div class="row">
+          <div class="col-8 py-5 border border-primary">
+            <b>Rentepercentage</b>
+          </div>
+          <div class="col-4 py-2 border border-primary">
+            <input 
+              style="background-color: #f1f1f1"
+              type="number" 
+              class="form-control" 
+              id="rentepercentage" 
+              step="0.1" 
+              value="{% if module5.rentepercentage > 0 and module5.rentepercentage != instellingen_rentepercentage.waarde %}{{module5.rentepercentage | round: 2}}{% else %}{{instellingen_rentepercentage.waarde | round: 2}}{% endif %}">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-8 py-5 border border-primary">
+            <b>Looptijd financiering in jaren</b>
+          </div>
+          <div class="col-4 py-2 border border-primary">
+            <input 
+              style="background-color: #f1f1f1"
+              type="number" 
+              class="form-control" 
+              id="doorlooptijd" 
+              value="{% if module5.doorlooptijd_hypotheek > 0 and module5.doorlooptijd_hypotheek != instellingen_doorlooptijd_hypotheek.waarde %}{{module5.doorlooptijd_hypotheek | round: 0}}{% else %}{{instellingen_doorlooptijd_hypotheek.waarde | round: 0}}{% endif %}">
+          </div>
+        </div>
+       <div class="row">
+          <div class="col-md-12 text-end pt-5">
+              <button type="button" id="berekenFinanciering" class="btn btn-primary">Berekenen</button>
+          </div>
+      </div>
+      </div>
+    </div>
+  
+    <div class="row text-primary">
+      <div class="col-md-12">
+        <table class="table">
+          <thead>
+            <tr>
+              <th class="border border-primary"></th>
+              <th class="border border-primary align-middle">
+                Rente financiering t.b.v. de verduurzaming
+              </th>
+              <th class="text-center bg-primary border-bottom border-primary text-white align-middle w-25">
+                {% if module5.rentepercentage %}{{module5.rentepercentage | round: 2}}{% else %}{{instellingen_rentepercentage.waarde | round: 2}}{% endif %} % rente
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="financieringRow" id="aflossingsvrijRow">
+              <td class="border border-primary align-middle">
+                <div class="form-check">
+                  <input style="transform: scale(2)" class="form-check-input financieringRadio" type="radio" name="rente"
+                    id="rente1" value="Aflossingsvrij" {% if module5.rente_financiering=="Aflossingsvrij" %} checked {%
+                    endif %} />
+                  <label class="form-check-label" for="rente1"></label>
+                </div>
+              </td>
+              <td class="bordamenvatting inventarer border-primary align-middle">
+                <b>Aflossingsvrij</b>
+                <!-- <p>(Je betaalt alleen rente, schuld blijft bestaan.)</p> -->
+              </td>
+              <td class="text-center border border-primary align-middle" id="aflossingsvrijBedrag">
+                {{ module5.aflossingsvrij_bedrag | to_currency: "€ ", 0, ".", "," }}
+              </td>
+            </tr>
+  
+            <tr class="financieringRow" id="lineairRow" 
+            {% if lineaire_financiering.zichtbaar == false %}
+              hidden
+            {% endif %}  
+              >
+              <td class="border border-primary align-middle">
+                <div class="form-check">
+                  <input style="transform: scale(2)" class="form-check-input financieringRadio" type="radio" name="rente"
+                    id="rente2" value="Lineair" {% if module5.rente_financiering=="Lineair" %} checked {% endif %} />
+                  <label class="form-check-label" for="rente2"></label>
+                </div>
+              </td>
+              <td class="border border-primary align-middle">
+                <b>Lineair</b>
+                <!-- <p>(Je lost volledig af inclusief rente, je begint met een hoger maandbedrag wat steeds minder wordt.)
+                </p> -->
+              </td>
+              <td class="text-center border border-primary align-middle" id="lineairBedrag">
+                {{ module5.lineair_bedrag | to_currency: "€ ", 0, ".", "," }}
+              </td>
+            </tr>
+  
+            <tr class="financieringRow" id="anuiteitRow">
+              <td class="border border-primary align-middle">
+                <div class="form-check">
+                  <input style="transform: scale(2)" class="form-check-input financieringRadio" type="radio" name="rente"
+                    id="rente3" value="Anuiteit" {% if module5.rente_financiering=="Annuïteit" %} checked {% endif %} />
+                  <label class="form-check-label" for="rente3"></label>
+                </div>
+              </td>
+  
+              <td class="border border-primary align-middle">
+                <b>Annuïteit</b>
+                <!-- <p>(Je lost je financiering volledig af inclusief rente, je betaalt een vast maandbedrag.) -->
+                </p>
+              </td>
+              <td class="border border-primary text-center align-middle" id="annuiteitBedrag">
+                {{ module5.annuiteit_bedrag | to_currency: "€ ", 0, ".", "," }}
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="row justify-content-between">
+      <h2 class="pt-7"><b>Jouw besparing na verduurzaming:</b></h2>
+      <div class="col-md-9 pb-7 ps-7 pe-7">
+        <div class="row">
+          <div class="col-6 py-2 border border-primary">
+          </div>
+          <div class="col-3 py-2 border border-primary text-end">
+            <b>Per maand</b>
+          </div>
+          <div class="col-3 py-2 border border-primary text-end">
+            <b>Per jaar</b>
+          </div>
+        </div>
+  
+        <div class="row">
+          <div class="col-6 py-2 border border-primary">
+            Besparing op elektra
+          </div>
+          <div class="col-3 py-2 border border-primary text-end">
+            {{ module5.besparing_stroom | divided_by: 12 | to_currency: "€ ", 0, ".", "," }}
+          </div>
+          <div class="col-3 py-2 border border-primary text-end">
+            {{ module5.besparing_stroom | to_currency: "€ ", 0, ".", "," }}
+          </div>
+        </div>
+  
+        <div class="row">
+          <div class="col-6 py-2 border border-primary">
+            Besparing op gas
+          </div>
+          <div class="col-3 py-2 border border-primary text-end">
+            {{ module5.besparing_gas | divided_by: 12 | to_currency: "€ ", 0, ".", "," }}
+          </div>
+          <div class="col-3 py-2 border border-primary text-end">
+            {{ module5.besparing_gas | to_currency: "€ ", 0, ".", "," }}
+          </div>
+        </div>
+  
+        <div class="row bg-primary text-white">
+          <div class="col-6 py-2 border border-primary">
+            <b>Besparing</b>
+          </div>
+          <div class="col-3 py-2 border border-primary text-end" id="besparingPerMaand">
+            {{ module5.besparing_per_jaar | divided_by: 12 | to_currency: "€ ", 0, ".", "," }}
+          </div>
+          <div class="col-3 py-2 border border-primary text-end" id="besparingPerJaar">
+            {{ module5.besparing_per_jaar | to_currency: "€ ", 0, ".", "," }}
+          </div>
+        </div>
+  
+        <div class="row">
+          <div class="col-6 py-2 border border-primary">
+            Financieringslasten
+          </div>
+          <div class="col-3 py-2 border border-primary text-end" id="hypotheeklastPerMaand">
+            {% if module5.rente_financiering == "Aflossingsvrij" %}
+              {% assign financieringslastMaand = module5.aflossingsvrij_bedrag %}
+            {% elsif module5.rente_financiering == "Annuïteit" %}
+              {% assign financieringslastMaand = module5.annuiteit_bedrag %}
+            {% else %}
+              {% assign financieringslastMaand = module5.lineair_bedrag %}
+            {% endif %}
+            {{ financieringslastMaand | to_currency: "€ ", 0, ".", "," }}
+          </div>
+          <div class="col-3 py-2 border border-primary text-end" id="hypotheeklastPerJaar">
+            {% assign financieringslastJaar = financieringslastMaand | times: 12 %}
+            {{ financieringslastJaar | to_currency: "€ ", 0, ".", "," }}
+          </div>
+        </div>
+  
+        <div class="row bg-secondary">
+          <div class="col-6 py-2 border border-primary">
+            Besparing na financieringslast
+          </div>
+          <div class="col-3 py-2 border border-primary text-end" id="besparingPerMaandNaHypotheeklast">
+            {{ module5.besparing_per_jaar | divided_by: 12 | minus: financieringslastMaand | to_currency: "€ ", 0, ".", "," }}
+          </div>
+          <div class="col-3 py-2 border border-primary text-end" id="besparingPerJaarNaHypotheeklast">
+            {{ module5.besparing_per_jaar | minus: financieringslastJaar | to_currency: "€ ", 0, ".", "," }}
+          </div>
+        </div>
+      </div>
+      <div class="col-md-2 align-middle col-12">
+        {% include 'besparings_meter' %}
+        <!-- <img src="{% file_asset_url 'Besparingsmeter' %}" alt="besparingsmeter" style="max-width: 100%; min-width: 25%" class="mx-auto"> -->
+      </div>
+    </div>
+  </div>
+  <div class="container-fluid p-8" style="background-color: #f1f1f1">
+    <div class="row">
+      <div class="col-12 text-primary">
+        <h2><b>Jouw verwachte energielabel</b></h2>
+        <p>
+          {% assign extra_hypotheek = financieringstabel.extra_hypotheek | plus: financieringstabel.verduurzamingshypotheek %}
+          <b>Let op:</b> mogelijk rente korting bij een verbeterd energielabel!
+          Het verwachte energielabel wordt beter dan jouw huidige energielabel
+          dankzij de verduurzaming van jouw pand. Een verbeterd energielabel
+          betekend een courantere woning en een positief effect op de waarde van
+          jouw woning. Daarnaast is het enegielabel bepalend voor de extra leencapaciteit bij een hypotheek voor aanschaf van een nieuwe of verbetering van een bestaande woning. Na het uitvoeren van de hierboven genoemde maatregelen zal jouw bestaande label {{module1.huidig_enegielabel}} naar verwachting wijzigen naar {{module5.verwacht_energielabel}} met een BENG-score van {{module5.bengscore}}. Je verhoogt jouw leencapaciteit hierdoor met {% if extra_hypotheek > 0 %}{{ extra_hypotheek | to_currency: "€ ", 0, ".", "," }}{% else %} €0{% endif %}.
+        </p>
+      </div>
+    </div>
+    <div class="row mb-3">
+      <!-- Energielabel  -->
+      <div class="pb-40 pt-20">
+        <table class="table-fixed">
+          <tr>
+            <td class="energielabel-sq color-white bgcolor-a"><b>A+++</b></td>
+            <td class="energielabel-sq color-white bgcolor-a"><b>A++</b></td>
+            <td class="energielabel-sq color-white bgcolor-a"><b>A+</b></td>
+            <td class="energielabel-sq color-white bgcolor-a"><b>A</b></td>
+            <td class="energielabel-sq color-white bgcolor-b"><b>B</b></td>
+            <td class="energielabel-sq color-white bgcolor-c"><b>C</b></td>
+            <td class="energielabel-sq color-white bgcolor-d"><b>D</b></td>
+            <td class="energielabel-sq color-white bgcolor-e"><b>E</b></td>
+            <td class="energielabel-sq color-white bgcolor-f"><b>F</b></td>
+            <td class="energielabel-sq color-white bgcolor-g"><b>G</b></td>
+          </tr>
+          <tr style="height: 25px;">
+            <td>
+              <div class="triangle-down color-a" {% if module5.verwacht_energielabel !="A+++" %} style="display: none;" {%
+                endif %}>
+              </div>
+            </td>
+            <td>
+              <div class="triangle-down color-a" {% if module5.verwacht_energielabel !="A++" %} style="display: none;" {%
+                endif %}>
+              </div>
+            </td>
+            <td>
+              <div class="triangle-down color-a" {% if module5.verwacht_energielabel !="A+" %} style="display: none;" {%
+                endif %}>
+              </div>
+            </td>
+            <td>
+              <div class="triangle-down color-a" {% if module5.verwacht_energielabel !="A" %} style="display: none;" {%
+                endif %}>
+              </div>
+            </td>
+            <td>
+              <div class="triangle-down color-b" {% if module5.verwacht_energielabel !="B" %} style="display: none;" {%
+                endif %}>
+              </div>
+            </td>
+            <td>
+              <div class="triangle-down color-c" {% if module5.verwacht_energielabel !="C" %} style="display: none;" {%
+                endif %}>
+              </div>
+            </td>
+            <td>
+              <div class="triangle-down color-d" {% if module5.verwacht_energielabel !="D" %} style="display: none;" {%
+                endif %}>
+              </div>
+            </td>
+            <td>
+              <div class="triangle-down color-e" {% if module5.verwacht_energielabel !="E" %} style="display: none;" {%
+                endif %}>
+              </div>
+            </td>
+            <td>
+              <div class="triangle-down color-f" {% if module5.verwacht_energielabel !="F" %} style="display: none;" {%
+                endif %}>
+              </div>
+            </td>
+            <td>
+              <div class="triangle-down color-g" {% if module5.verwacht_energielabel !="G" %} style="display: none;" {%
+                endif %}>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="10" style="height: 40px" {% if module5.verwacht_energielabel=="A+++" %}
+              class="bgcolor-a text-center color-white border-radius" {% elsif module5.verwacht_energielabel=="A++" %}
+              class="bgcolor-a text-center color-white border-radius" {% elsif module5.verwacht_energielabel=="A+" %}
+              class="bgcolor-a text-center color-white border-radius" {% elsif module5.verwacht_energielabel=="A" %}
+              class="bgcolor-a text-center color-white border-radius" {% elsif module5.verwacht_energielabel=="B" %}
+              class="bgcolor-b text-center color-white border-radius" {% elsif module5.verwacht_energielabel=="C" %}
+              class="bgcolor-c text-center color-white border-radius" {% elsif module5.verwacht_energielabel=="D" %}
+              class="bgcolor-d text-center color-white border-radius" {% elsif module5.verwacht_energielabel=="E" %}
+              class="bgcolor-e text-center color-white border-radius" {% elsif module5.verwacht_energielabel=="F" %}
+              class="bgcolor-f text-center color-white border-radius" {% elsif module5.verwacht_energielabel=="G" %}
+              class="bgcolor-g text-center color-white border-radius" {% endif %}>
+              <b>Jouw nieuwe energielabel wordt ingeschat op label: {% if module5.verwacht_energielabel %}{{module5.verwacht_energielabel}} (conform NTA 8800 norm){% else %}Geen energielabel bekend, je kunt deze aanvragen via Positief Wonen.{% endif %}</b> 
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  
+    <div class="row pb-40">
+      <div class="col-9 border border-primary py-2">
+        <b>Mogelijke rentekorting op totale financiering</b>
+      </div>
+      <div class="col-3 bg-primary text-white border border-primary text-center my-auto py-2">
+        {% if module5.verwacht_energielabel == "A+++" or module5.verwacht_energielabel == "A++" or module5.verwacht_energielabel == "A+" or module5.verwacht_energielabel == "A" %} -0,20% rente
+        {% elsif module5.verwacht_energielabel == "B" %} -0,10% rente
+        {% else %} 0,00% rente
+        {% endif %}
+      </div>
+      <div class="col-9 border border-primary py-2">
+        <b>Extra leencapaciteit</b>
+      </div>
+      <div class="col-3 bg-primary text-white border border-primary text-center my-auto py-2">
+        {% if extra_hypotheek > 0 %}{{ extra_hypotheek | to_currency: "€ ", 0, ".", "," }}{% else %} €0{% endif %}
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-6">
+        <img src="{% file_asset_url 'energiepresetatiegarantie_tabel' %}" alt="energiepresetatiegarantie" style="width:100%; height: auto;">
+      </div>
+      <div class="col-6">
+        <img src="{% file_asset_url 'energielabel_tabel' %}" alt="Energielabel tabel" style="width:100%; height: 100%;">
+      </div>
+    </div>
+  </div>
+  <div class="container-fluid p-8 border-right border-left">
+    <div class="row">
+      <div class="col-12">
+        <h2><b>Jouw winst</b></h2>
+        <p>
+          Verduurzamen van je woning levert je naast een positief gevoel en meer comfort ook geldelijk voordeel op. Zo gaan je maandelijkse energielasten omlaag, ontvang je een beter rendement op je geld dan op de bank en verhoog je leencapaciteit voor een hypotheek. Je woning stijgt in waarde en je verbetert je CO2 footprint.
+        </p>
+      </div>
+    </div>
+    <div class="row pt-2">
+      <div class="col-9 border-top border-left border-primary py-2">
+        Maandelijkse besparing met verrekening financieringslasten
+      </div>
+      <div class="col-3 bg-primary text-white border-light border-top border-primary text-center my-auto py-2" id="besparingPerMaandUwWinst">
+        {{ module5.besparing_per_maand | to_currency: "€ ", 0, ".", ","}}
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-9 border-top border-left border-primary py-2">
+        Rendement op jouw investering
+      </div>
+      <div class="col-3 bg-primary text-white border-top border-light text-center my-auto py-2">
+        {{ module5.rendement | to_currency: "", 2, ".", ","}}%
+      </div>
+    </div>
+      <div class="row">
+        <div class="col-9 border-top border-left border-primary py-2">
+          Waardestijging woning
+        </div>
+        <div class="col-3 bg-primary text-white border-top border-light text-center my-auto py-2">
+          {% if waardestijgingstabel.waardestijging > 0 %}{{ waardestijgingstabel.waardestijging }}{% else %}0{% endif %}%
+        </div>
+      </div>
+    <div class="row">
+      <div class="col-9 border-top border-left border-primary py-2">
+        Extra leencapaciteit door EPA label bij aankoop van deze woning
+      </div>
+      <div class="col-3 bg-primary text-white border-top border-light text-center my-auto py-2">
+        {% if financieringstabel.extra_hypotheek > 0 %}{{ financieringstabel.extra_hypotheek | to_currency: "€ ", 0, ".", ","}}{% else %}€ 0{% endif %}
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-9 border-top border-left border-primary py-2">
+        Extra leencapaciteit door EPA label bij verduurzamen van deze woning
+      </div>
+      <div class="col-3 bg-primary text-white border-top border-light text-center my-auto py-2">
+        {% if financieringstabel.verduurzamingshypotheek > 0 %}{{ financieringstabel.verduurzamingshypotheek | to_currency: "€ ", 0, ".", ","}}{% else %}€ 0{% endif %}
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-9 border-top border-left border-primary py-2">
+        Terugverdientijd zonder waardestijging van jouw woning
+      </div>
+      <div class="col-3 bg-primary text-white border-top border-light text-center my-auto py-2">
+        {{ module5.terugverdientijd }} jaar
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-9 border-top border-left border-primary py-2">
+        Je verlaagt de CO2 uitstoot per jaar met
+      </div>
+      <div class="col-3 bg-primary text-white border-top border-light text-center my-auto py-2">
+        {{ module5.co2_verbetering }} Kg
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-9 border-top border-bottom border-left border-primary py-2">
+        Aantal bomen die je niet hoeft te planten per jaar
+      </div>
+      <div class="col-3 bg-primary text-white border border-light text-center my-auto py-2">
+        {{ module5.bomen }} bomen
+      </div>
+    </div>
+  </div>
+  <div class="container-fluid px-10 border-right border-left">
+    <div class="row text-white py-3">
+      <div class="col-6 col-md-9 py-3"></div>
+    </div>
+  </div>
+  <div class="container-fluid px-8 pb-10 bg-primary">
+    <div class="row">
+      <div class="col-9 pt-5">
+        <!-- Deze row is in het leven geroepen voor het Logo (nu vinkje) -->
+      </div>
+      <div class="col-2">
+        <img src="{% file_asset_url 'vinkje' %}" alt="logo" style="width: 200px"
+          class="position-absolute top-0 start-100 translate-middle" />
+      </div>
+      <div class="col-1"></div>
+    </div>
+  
+    <div class="row bg-primary text-white py-3">
+      <div class="col-md-12">
+        <h2><b>Onze partner Positief Wonen levert top kwaliteit</b></h2>
+        <p>
+          Wij werken samen met Positief Wonen op gebied van duurzaamheidsadvies. Zo heeft u een One-stop-shop ervaring voor zowel financierings- als verduurzamingsadvies. Positief Wonen ontzorgt je bij het verduurzamen van je vastgoed. Ze geven onafhankelijk advies, zijn het centrale aanspreekpunt voor installatie en maken nieuwe energielabels. Zo verlagen ze je maandlasten. Gegarandeerd! Meer info, kijk op <a style="color:#ced037;" href="www.positiefwonen.nl>www.positiefwonen.nl">www.positiefwonen.nl</a></p>
+      </div>
+    </div>
+    <div class="row text-white py-4" style="background-color: #2d485d">
+      {% for image in images %}
+        <div class="col-4 py-4 text-center">
+          <img width="" height="350px" src="{{image.image}}" alt="{{image.titel}}">
+        </div>
+      {% endfor %}
+    </div>
+  
+    <div class="row bg-secondary text-white">
+      <div class="col-8 text-primary my-auto">
+        <b>Wil je een Persoonlijk Duurzaamheidsadvies bij je thuis laten maken voor slechts € 99,-? Dat schept duidelijkheid en levert altijd voordeel op!</b>
+      </div>
+      <div class="col-2 text-center py-2 my-auto">
+        <button value="1" id="duurzaamheidsRapportAntwoordJa"
+          class="btn-outline-primary btn w-100 btn-secondary mt-3 lift rounded-3 btn3 {% if module5.maatwerk_advies %} btnState {% endif %}">
+          Ja
+        </button>
+      </div>
+      <div class="col-2 text-center py-4 my-auto">
+        <button value="0" id="duurzaamheidsRapportAntwoordNee"
+          class="btn-outline-primary btn w-100 btn-secondary mt-3 lift rounded-3 btn3 {% if module5.maatwerk_advies == false %} btnState {% endif %}">
+          Nee
+        </button>
+      </div>
+    </div>
+  
+    <div id="offertesOntvangenAntwoordVraag"
+      class="row bg-secondary text-white mt-1 {% if module5.maatwerk_advies %} d-none {% endif %}">
+      <div class="col-8 text-primary my-auto">
+        <b>Wil je offertes ontvangen?</b>
+        <div style="display: inline-block; position: relative;">
+          <i data-feather="info" class="tooltip-trigger" style="cursor: pointer; width: 20px; height: 20px;"></i>
+          <div class="custom-tooltip" style="display: none; position: absolute; bottom: 100%; left: 50%; transform: translateX(-50%); padding: 5px; background-color: black; color: white; border-radius: 5px; z-index: 100;">
+            Je krijgt niet zo maar offertes toegestuurd, wij nemen contact op met jou.
+          </div>
+        </div>
+      </div>
+      <div class="col-2 text-center py-4 my-auto">
+        <button value="1" id="offertesOntvangenAntwoordJa"
+          class="btn-outline-primary btn w-100 btn-secondary mt-3 lift rounded-3 btn3 {% if module5.offertes_ontvangen %} btnState {% endif %}">
+          Ja
+        </button>
+      </div>
+      <div class="col-2 text-center py-4 my-auto">
+        <button value="0" id="offertesOntvangenAntwoordNee"
+          class="btn-outline-primary btn w-100 btn-secondary mt-3 lift rounded-3 btn3 {% if module5.offertes_ontvangen == false %} btnState {% endif %}">
+          Nee
+        </button>
+      </div>
+    </div>
+  
+    <!-- Offerte tabel start -->
+      <div class="row bg-secondary text-white mt-1 offerteRows"style="background-color:green" {% if module5.offertes_ontvangen == false %} hidden {% endif %}>
+        <div class="col-8 text-white my-auto" style="background-color:green">
+          <b>Onderwerp</b>
+        </div>
+        <div class="col-4 text-center my-auto" style="background-color:green">
+          <b>Vraag offerte aan</b>
+        </div>
+      </div>
+      
+      <div class="row bg-secondary text-white mt-1 offerteRows" {% if module5.offertes_ontvangen == false %} hidden {% endif %}>
+        <div class="col-8 text-primary my-auto">
+          Dak isolatie
+        </div>
+        <div class="col-4 text-center py-4 my-auto">
+          <input type="checkbox" class="form-check-input offerteChkBoxs" id="dakIsolatieOfferteRowChkBox"
+          {% if offertes.dak %} checked {% endif %}>
+        </div>
+      </div>
+      
+      <div class="row bg-secondary text-white mt-1 offerteRows" {% if module5.offertes_ontvangen == false %} hidden {% endif %}>
+        <div class="col-8 text-primary my-auto">
+          Spouwmuren isolatie
+        </div>
+        <div class="col-4 text-center py-4 my-auto">
+          <input type="checkbox" class="form-check-input offerteChkBoxs" id="murenIsolatieOfferteRowChkBox"
+          {% if offertes.muren %} checked {% endif %}>
+        </div>
+      </div>
+      
+      <div class="row bg-secondary text-white mt-1 offerteRows" {% if module5.offertes_ontvangen == false %} hidden {% endif %}>
+        <div class="col-8 text-primary my-auto">
+          Vloer isolatie
+        </div>
+        <div class="col-4 text-center py-4 my-auto">
+          <input type="checkbox" class="form-check-input offerteChkBoxs" id="vloerIsolatieOfferteRowChkBox"
+          {% if offertes.vloer %} checked {% endif %}>
+        </div>
+      </div>
+      
+      <div class="row bg-secondary text-white mt-1 offerteRows" {% if module5.offertes_ontvangen == false %} hidden {% endif %}>
+        <div class="col-8 text-primary my-auto">
+          Raam isolatie
+        </div>
+        <div class="col-4 text-center py-4 my-auto">
+          <input type="checkbox" class="form-check-input offerteChkBoxs" id="raamIsolatieOfferteRowChkBox"
+          {% if offertes.ramen %} checked {% endif %}>
+        </div>
+      </div>
+  
+      <div class="row bg-secondary text-white mt-1 offerteRows" {% if module5.offertes_ontvangen == false %} hidden {% endif %}>
+        <div class="col-8 text-primary my-auto">
+          Warmtepomp
+        </div>
+        <div class="col-4 text-center py-4 my-auto">
+          <input type="checkbox" class="form-check-input offerteChkBoxs" id="warmtepompRowChkBox"  
+          {% if offertes.warmtepomp %} checked {% endif %} >
+        </div>
+      </div>
+  
+      {% if module1.vloerverwarming_aanwezig == false %}
+        <div class="row bg-secondary text-white mt-1 offerteRows" {% if module5.offertes_ontvangen == false %} hidden {% endif %}>
+          <div class="col-8 text-primary my-auto">
+            Vloerverwarming
+          </div>
+          <div class="col-4 text-center py-4 my-auto">
+            <input type="checkbox" class="form-check-input offerteChkBoxs" id="vloerverwarmingRowChkBox"  
+            {% if offertes.vloerverwarming %} checked {% endif %} >
+          </div>
+        </div>
+      {% endif %}
+      
+      <div class="row bg-secondary text-white mt-1 offerteRows" {% if module5.offertes_ontvangen == false %} hidden {% endif %}>
+        <div class="col-8 text-primary my-auto">
+          Zonnepanelen
+        </div>
+        <div class="col-4 text-center py-4 my-auto">
+          <input type="checkbox" class="form-check-input offerteChkBoxs" id="zonnepanelenOfferteRowChkBox"
+          {% if offertes.zonnepanelen %} checked {% endif %}>
+        </div>
+      </div>
+  
+      <div class="row bg-secondary text-white mt-1 offerteRows" {% if module5.offertes_ontvangen == false %} hidden {% endif %}>
+        <div class="col-8 text-primary my-auto">
+          Airconditioning 
+        </div>
+        <div class="col-4 text-center py-4 my-auto">
+          <input type="checkbox" class="form-check-input offerteChkBoxs" id="airconditioningOfferteRowChkBox"
+          {% if offertes.airconditioning %} checked {% endif %}>
+        </div>
+      </div>
+  
+      <div class="row bg-secondary text-white mt-1 offerteRows" {% if module5.offertes_ontvangen == false %} hidden {% endif %}>
+        <div class="col-8 text-primary my-auto">
+          Waterontharder 
+        </div>
+        <div class="col-4 text-center py-4 my-auto">
+          <input type="checkbox" class="form-check-input offerteChkBoxs" id="waterontharderOfferteRowChkBox"
+          {% if offertes.waterontharder %} checked {% endif %}>
+        </div>
+      </div>
+  
+      <div class="row bg-secondary text-white mt-1 offerteRows" {% if module5.offertes_ontvangen == false %} hidden {% endif %}>
+        <div class="col-8 text-primary my-auto">
+          Luchtreiniger 
+        </div>
+        <div class="col-4 text-center py-4 my-auto">
+          <input type="checkbox" class="form-check-input offerteChkBoxs" id="luchtreinigerOfferteRowChkBox"
+          {% if offertes.luchtreiniger %} checked {% endif %}>
+        </div>
+      </div>
+      
+    <!-- Offerte tabel einde -->
+    
+    <div class="row bg-primary text-white pb-2 pt-8">
+      <div class="col-md-12">
+        <h2><b>Beschikbaar budget</b></h2>
+      </div>
+    </div>
+    
+    <!-- benodigde investering -->
+    <div class="row">
+      <div class="col-9 border border-white text-white py-4" style="background-color: #2d485d">
+        <b>Totaal benodigde investering</b>
+      </div>
+      <input id="benodigdeInvestering" class="col-3 text-white border border-white text-end my-auto py-4"
+        style="background-color: #2d485d" type="text" value='{{ module5.totale_bruto_investering | to_currency: "€ ", 0, ".", ","}}' />
+    </div>
+  
+    <!-- extra row voor totaal beschikbaar bedrag consument -->
+    <div class="row">
+      <div class="col-9 border border-white text-white py-4" style="background-color: #2d485d">
+        <b>Totaal beschikbaar bedrag</b>
+      </div>
+      <input id="klantBudget" class="col-3 text-white border border-white text-end my-auto py-4"
+        style="background-color: #386b92;" type="text" placeholder="€" value='{{ customer.budget }}'/>
+    </div>
+    <div class="row">
+      <textarea class="form-control bg-primary text-white border border-white rounded-0" id="toelichting" rows="5"
+        placeholder="Eventuele toelichting">{{ customer.toelichting }}</textarea>
+    </div>
+    <div class="row">
+      <div class="col-9 bg-primary text-white py-3 my-auto">
+        Samenvatting advies bewaren of delen? Download hier de adviessamenvatting. 
+      </div>
+      <div class="col-3 bg-primary text-white text-end my-auto py-3">
+        <button id="downloadBtn" class="btn-outline-white text-white btn w-100 btn-primary mt-3 lift rounded-3"
+          value="{{customer.klantnaam}}">
+          PDF downloaden
+        </button>
+      </div>
+    </div>
+  
+  </div>
+  <div class="container-fluid p-8" style="background-color: #f1f1f1" hidden>
+    <div class="col-md-12 border border-5 rounded-3 border-dark p-5 my-2 bg-white">
+      <div class="row">
+        <div class="col-md-12">
+          <h3>
+            <b>Maak een afspraak met de duurzaamheidsadviseur van Positief
+              Wonen</b>
+          </h3>
+          <p>
+            Hoeveel energie je nodig hebt voor jouw (nieuwe) situatie, wat uw
+            voorkeur is qua type paneel, hoeveel panelen je nodig hebt en wat dat
+            gaat kosten wordt echt concreet als je contact opneemt met een
+            specialist van Positief Wonen. Om te zien wat de mogelijkheden op uw
+            locatie daadwerkelijk zijn is het verstandig om deze specialist uit te
+            nodigen.
+          </p>
+        </div>
+      </div>
+      <div class="row d-flex justify-content-end">
+        <div class="col-1">
+          <input type="checkbox" class="form-check-input checkbox-primary" id="uitnodigenAdviseur" style=" width: 35px; height: 35px; min-width:
+          35px; min-height: 35px; " {% if module5.adviseur_uitnodigen %} checked {% endif %} />
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container-fluid p-4 d-flex justify-content-between">
+    <a href="/positiefwonen/project/zonnepanelen/{{project.uuid}}">
+      <button type="button" class="btn btn-primary">Vorige pagina</button>
+    </a>
+      <!-- <button type="button" id="indienen" class="btn btn-primary"  data-bs-toggle="modal" data-bs-target="#modal-finished"
+      {% if module5.ingediend %} disabled {% endif %}
+      >{% if module5.ingediend %} Ingediend {% else %} Indienen {% endif %}</button> -->
+  
+  
+      <button 
+        id="topadviesBtn" 
+        class="btn btn-primary" 
+        data-bs-toggle="modal" 
+        data-bs-target="#modal-finished" 
+        {% if module5.ingediend %} disabled {% endif %}>
+        Rapport verzenden
+      </button>
+  </div>
+  
+</div>

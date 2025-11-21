@@ -1,0 +1,192 @@
+<div class="container-fluid p-8 border">
+  <div class="row align-items-center">
+    <div class="col-12 text-end">
+     <b>Rapportnummer:</b><span id="projectId"> {{ project.id }}</span>
+    </div>
+  </div>
+  <div class="row align-items-center">
+	  <div class="col-12 col-md-8 text-primary">
+      <h2><b>Duurzaam verwarmen</b></h2>
+    </div> 
+	</div>
+  <div class="row">
+    <div class="col-12">
+      <p>
+        Verwarming is een grote energieverbruiker in huis. Ongeveer de helft van je energierekening bestaat uit kosten voor verwarming, en 18 procent voor warm water. Voor je portemonnee en het klimaat levert het dus veel op om je huis zuinig en op een duurzame manier te verwarmen. De overstap van aardgas naar duurzame warmte wordt ook wel de energietransitie genoemd.
+        <br><br>
+        Een <b><u>warmtepomp</u></b> is een duurzame manier om je huis zonder of met minder aardgas te verwarmen. De warmtepomp maakt gebruik van elektriciteit en van de warmte in de buitenlucht of bodem. Maar pas op: niet alle vormen van elektrische verwarming zijn duurzaam! Gewone elektrische kacheltjes, elektrische vloerverwarming en een inductie cv-ketel zijn bijvoorbeeld niet duurzaam.
+        <br><br>
+        Hieronder tref je voor jou situatie, type woning en isolatiewaarden de best passende oplossing om duurzaam te gaan verwarmen.
+      </p>
+    </div>
+  </div>
+</div>
+<div class="container-fluid p-8 bg-primary text-white">
+  <div class="row">
+    <div class="col-12">
+      <div class="row">
+        <div class="col-md-7">
+          <div class="row">
+            <div class="col-12">
+              <h2><b>{{module3.pwoplossingen.type_oplossing}}</b></h2>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12 pb-2">
+              <p>
+                {{module3.pwoplossingen.beschrijving}}
+              </p>
+            </div>
+          </div>
+          <div class="row pt-7 text-bottom">
+            <div class="col-12">
+              <h3>
+                <strong> Prijs inclusief installatie en toebehoren </strong>
+                <i class="bi bi-info-circle"></i>
+              </h3>
+              <h5>
+                {% if module3.pwoplossingen.type_oplossing == "Full electric" %}
+                  (aansluitset, buffervat, sanitair watervat e.d.)
+                {% elsif oplossing_informatie.prijs > 0 %}
+                  (aansluitset, buffervat e.d.)
+                {% else %}
+                  
+                {% endif %}
+              </h5>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <h1><strong>{% if oplossing_informatie.prijs > 0 %}{{oplossing_informatie.prijs | to_currency: "€ ", 0, ".", "," }}{% else %}€ 0,-{% endif %}</strong></h1>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <div class="row">
+                <div class="col-md-8">
+                  <div class="row">
+                    <div
+                      class="col-12 bg-secondary my-3 ms-5 d-flex justify-content-between py-3 text-primary"
+                    >
+                      <b>Subsidie: </b>
+                      <b><span class="text-end">{% if oplossing_informatie.subsidie >0 %}{{ oplossing_informatie.subsidie | to_currency: "€", 0, ".", "," }}{% else %}€ 0,-{% endif %}</span></b>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-5">
+          {% if module3.pwoplossingen.id == 8 %}
+          <div class="row pt-5 pb-5">
+          {% else %}
+          <div class="row pt-5 pb-5 bg-secondary">
+          {% endif %}
+            <div class="col-12 d-flex justify-content-center">
+              {% if module3.pwoplossingen.id == 7 or module3.pwoplossingen.id == 8 %}
+                <img
+                  src="{{module3.pwoplossingen.afbeelding}}"
+                  alt="warmtepomp"
+                  class="img-fluid" width="100%"
+                />
+              {% else %}
+                <img
+                  src="{{module3.pwoplossingen.afbeelding}}"
+                  alt="warmtepomp"
+                  class="img-fluid" width="75%"
+                />
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+      {% if oplossing_informatie.prijs > 0 %}
+        <div class="row">
+          <div class="col-md-12 mt-5">
+            <h3><strong>Subsidie krijgen op je warmtepomp</strong></h3>
+            Een warmtepomp moet vanaf 2024 minimaal energielabel A++ hebben om ISDE te ontvangen. De meeste warmtepompen voldoen al aan dit label. Warmtepompen met een energielabel A+ of lager, komen niet meer in aanmerking voor subsidie.
+            <br><br>
+            De subsidiebedragen voor warmtepompen met een energielabel A++ of hoger, zijn met € 450 verhoogd. De gelijkwaardige bonus die eerder werd gegeven voor deze energiezuinige warmtepompen, komt te vervallen. Voor warmtepompen met een energielabel A+++ geldt voortaan wel een aanvullende bonus van € 225.
+            <br><br>
+            <small><i>Het hogere bedrag dat je krijgt voor een geïnstalleerde warmtepomp per 2024 is afhankelijk van het energielabel en het thermisch vermogen van de warmtepomp. Voor een hybride warmtepomp krijg je tussen de € 1.600 tot € 3.150 subsidie. Voor een volledige lucht/water-warmtepomp is het subsidiebedrag € 1.950 tot € 4.500,-.</i></small>
+          </div>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+{% if module1.vloerverwarming_aanwezig == false %}
+  <div class="container-fluid bg-primary text-white text-center">
+    <div class="row py-5" style="background-color: #374e60">
+      <div class="col-md-2 py-2">
+        <svg xmlns="http://www.w3.org/2000/svg" width="45" height="45" fill="currentColor" class="bi bi-circle-square"
+          viewBox="0 0 16 16">
+          <path d="M0 6a6 6 0 1 1 12 0A6 6 0 0 1 0 6z" />
+          <path
+            d="M12.93 5h1.57a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5v-1.57a6.953 6.953 0 0 1-1-.22v1.79A1.5 1.5 0 0 0 5.5 16h9a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 4h-1.79c.097.324.17.658.22 1z" />
+        </svg>
+      </div>
+      <div class="col-md-8 py-2 my-auto">
+        {{ vloerverwarming_advies.beschrijving }}
+      </div>
+      <div class="col-md-2 py-2 my-auto">
+        <strong>Richtprijs: {{ module3.vloerverwarming_kosten | to_currency: "€", 0, ".", ","}}</strong>
+      </div>
+    </div>
+    <div class="row py-1 bg-primary"></div>
+  </div>
+{% endif %}
+
+{% if warmtepomp_aanwezig == false or module1.vloerverwarming_aanwezig == false %}
+<div class="container-fluid p-7" style="background-color: #f1f1f1">
+  <h4 class="row pt-5"><b>Te nemen maatregel</b></h4>
+
+  <table class="table">
+    <thead>
+      <tr class="py-3">
+        <th class="col-2">Maatregel</th>
+        <th class="col-2">Richtprijs</th>
+        <th class="col-2">Subsidie</th>
+        <th class="col-2">Besparing per jaar</th>
+        <th class="col-2">Terugverdientijd in jaren</th>
+        <th class="col-2">Offerte?</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Oplossing Row -->
+      {% if warmtepomp_aanwezig == false %}
+        <tr id="">
+          <td>{{ module3.pwoplossingen.type_oplossing }}</td>
+          <td>{{ oplossing_informatie.prijs | to_currency: "€", 0, ".", "," }}</td>
+          <td>{{ oplossing_informatie.subsidie | to_currency: "€", 0, ".", "," }}</td>
+          <td>{{ module3.besparing_oplossing | to_currency: "€", 0, ".", "," }}</td>
+          <td>{{ oplossing_informatie.prijs | minus: oplossing_informatie.subsidie | divided_by: module3.besparing_oplossing | round: 1 }}</td>
+          <td><input type="checkbox" class="form-check-input offerteChkBoxs" id="oplossingOfferteChkB" {% if offerte.warmtepomp %}checked{% endif %}></td>
+        </tr>
+      {% endif %}
+    <!-- Vloerverwarming Row -->
+    {% if module1.vloerverwarming_aanwezig == false %}
+      <tr id="">
+        <td>Vloerverwarming</td>
+        <td>{{ module3.vloerverwarming_kosten | to_currency: "€", 0, ".", ","}}</td>
+        <td>n.v.t.</td>
+        <td>n.v.t.</td>
+        <td>n.v.t.</td>
+        <td><input type="checkbox" class="form-check-input offerteChkBoxs" id="vloerverwarmingOfferteChkB" {% if offerte.vloerverwarming %}checked{% endif %}></td>
+      </tr>
+    {% endif %}
+    </tbody>
+  </table>
+</div>
+{% endif %}
+
+<div class="container-fluid p-4 d-flex d-flex justify-content-between">
+  <a href="/positiefwonen/project/isolatie-check/{{project.uuid}}">
+    <button type="button" class="btn btn-primary">Vorige pagina</button>
+  </a>
+  <a href="/positiefwonen/project/zonnepanelen/{{project.uuid}}">
+    <button type="button" class="btn btn-primary">Volgende pagina</button>
+  </a>
+</div>

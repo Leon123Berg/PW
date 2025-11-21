@@ -1,0 +1,101 @@
+<!-- Energielabel  -->
+<div class="pb-40 pt-20">
+    <table class="table-fixed">
+        <tr>
+            <td class="energielabel-sq color-white bgcolor-a"><b>A+++</b></td>
+            <td class="energielabel-sq color-white bgcolor-a"><b>A++</b></td>
+            <td class="energielabel-sq color-white bgcolor-a"><b>A+</b></td>
+            <td class="energielabel-sq color-white bgcolor-a"><b>A</b></td>
+            <td class="energielabel-sq color-white bgcolor-b"><b>B</b></td>
+            <td class="energielabel-sq color-white bgcolor-c"><b>C</b></td>
+            <td class="energielabel-sq color-white bgcolor-d"><b>D</b></td>
+            <td class="energielabel-sq color-white bgcolor-e"><b>E</b></td>
+            <td class="energielabel-sq color-white bgcolor-f"><b>F</b></td>
+            <td class="energielabel-sq color-white bgcolor-g"><b>G</b></td>
+        </tr>
+        <tr style="height: 25px;">
+            <td>
+                <div class="triangle-down color-a" {% if module.huidig_energielabel !="A+++" %}
+                    style="display: none;" {% endif %}>
+                </div>
+            </td>
+            <td>
+                <div class="triangle-down color-a" {% if module.huidig_energielabel !="A++" %} style="display: none;"
+                    {% endif %}>
+                </div>
+            </td>
+            <td>
+                <div class="triangle-down color-a" {% if module.huidig_energielabel !="A+" %} style="display: none;"
+                    {% endif %}>
+                </div>
+            </td>
+            <td>
+                <div class="triangle-down color-a" {% if module.huidig_energielabel !="A" %} style="display: none;"
+                    {% endif %}>
+                </div>
+            </td>
+            <td>
+                <div class="triangle-down color-b" {% if module.huidig_energielabel !="B" %} style="display: none;"
+                    {% endif %}>
+                </div>
+            </td>
+            <td>
+                <div class="triangle-down color-c" {% if module.huidig_energielabel !="C" %} style="display: none;"
+                    {% endif %}>
+                </div>
+            </td>
+            <td>
+                <div class="triangle-down color-d" {% if module.huidig_energielabel !="D" %} style="display: none;"
+                    {% endif %}>
+                </div>
+            </td>
+            <td>
+                <div class="triangle-down color-e" {% if module.huidig_energielabel !="E" %} style="display: none;"
+                    {% endif %}>
+                </div>
+            </td>
+            <td>
+                <div class="triangle-down color-f" {% if module.huidig_energielabel !="F" %} style="display: none;"
+                    {% endif %}>
+                </div>
+            </td>
+            <td>
+                <div class="triangle-down color-g" {% if module.huidig_energielabel !="G" %} style="display: none;"
+                    {% endif %}>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="10" style="height: 40px" 
+                {% if module.huidig_energielabel=="A+++" %}
+                    class="bgcolor-a text-center color-white border-radius" 
+                {% elsif module.huidig_energielabel=="A++" %}
+                    class="bgcolor-a text-center color-white border-radius" 
+                {% elsif module.huidig_energielabel=="A+" %}
+                    class="bgcolor-a text-center color-white border-radius" 
+                {% elsif module.huidig_energielabel=="A" %}
+                    class="bgcolor-a text-center color-white border-radius" 
+                {% elsif module.huidig_energielabel=="B" %}
+                    class="bgcolor-b text-center color-white border-radius" 
+                {% elsif module.huidig_energielabel=="C" %}
+                    class="bgcolor-c text-center color-white border-radius" 
+                {% elsif module.huidig_energielabel=="D" %}
+                    class="bgcolor-d text-center color-white border-radius" 
+                {% elsif module.huidig_energielabel=="E" %}
+                    class="bgcolor-e text-center color-white border-radius" 
+                {% elsif module.huidig_energielabel=="F" %}
+                    class="bgcolor-f text-center color-white border-radius" 
+                {% elsif module.huidig_energielabel=="G" %}
+                    class="bgcolor-g text-center color-white border-radius" 
+                {% else %}
+                    class="bgcolor-g text-center color-white border-radius"
+                {% endif %}>
+                {% if module.geschat_energielabel == true %}
+                    <b>Er is voor deze woning geen energielabel. Jouw geschatte energielabel is: {{module.huidig_energielabel}}</b>
+                {% else %}
+                    <b>Jouw huidige energielabel is vastgesteld op: {{module.huidig_energielabel}}</b>
+                {% endif %}
+            </td>
+        </tr>
+    </table>
+</div>

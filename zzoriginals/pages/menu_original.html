@@ -1,0 +1,60 @@
+<div class="container-fluid text-center p-6 text-primary">
+  <h1><strong>Maak een nieuw project aan of kies een bestaand project om mee verder te gaan.</strong></h1>
+</div>
+<div class="container-fluid">
+  <div id="verticalCenterMe " class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-10">
+      <div class="row menuBtns">
+        <div class="col-md-0 col-lg-2"></div>
+        <div class="col-md-6 col-lg-4 d-flex flex-column align-items-center justify-content-center">
+          <form id="newProjectForm" method="post" action="/positiefwonen/project/menu/post">
+            {{ csrf_tag }}
+            <button type="submit"
+              class="btn btn-outline-primary bg-primary text-white d-flex flex-column align-items-center justify-content-center">
+              <svg xmlns="http://www.w3.org/2000/svg" width="200px" height="200px" fill="currentColor"
+                class="bi bi-compass" viewBox="0 0 16 16">
+                <path
+                  d="M8 16.016a7.5 7.5 0 0 0 1.962-14.74A1 1 0 0 0 9 0H7a1 1 0 0 0-.962 1.276A7.5 7.5 0 0 0 8 16.016zm6.5-7.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z" />
+                <path d="m6.94 7.44 4.95-2.83-2.83 4.95-4.949 2.83 2.828-4.95z" />
+              </svg>
+              <label class="p-2 align-self-center display-4">Nieuw</label>
+            </button>
+          </form>
+        </div>
+        <div class="col-md-6 col-lg-4 d-flex flex-column align-items-center justify-content-center">
+          <div class="col text-center">
+            <button type="button" data-bs-toggle="modal" data-bs-target="#projectModal"
+              class="btn btn-outline-primary bg-primary text-white d-flex flex-column align-items-center justify-content-center">
+              <svg xmlns="http://www.w3.org/2000/svg" width="200px" height="200px" fill="currentColor"
+                class="bi bi-columns" viewBox="0 0 16 16" style="vertical-align: middle;">
+                <path
+                  d="M0 2a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1V2zm8.5 0v8H15V2H8.5zm0 9v3H15v-3H8.5zm-1-9H1v3h6.5V2zM1 14h6.5V6H1v8z" />
+              </svg>
+              <label class="p-2 align-self-center display-4">Openen</label>
+            </button>
+          </div>
+        </div>
+        <div class="col-md-0 col-lg-2"></div>
+      </div>
+      <div class="col-md-12 col-lg-4 d-flex flex-column align-items-center justify-content-center">
+      </div>
+    </div>
+    <div class="col-md-1"></div>
+  </div>
+  <div id="" class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-10">
+      <div class="row menuBtns">
+        <div class="col-md-0 col-lg-2"></div>
+        <div class="col-md-6 col-lg-8 d-flex flex-column align-items-center justify-content-center">
+          <a target="_blank" href="https://www.wdwa.nl/documentatie-en-inspiratie/" type="button" class="btn btn-outline-primary bg-primary text-white d-flex flex-column align-items-center justify-content-center w-100 py-5">
+            <label class="p-2 align-self-center display-6">Documentatie en inspiratie</label>
+          </a>
+        </div>
+        <div class="col-md-0 col-lg-2"></div>
+      </div>
+    </div>
+    <div class="col-md-1"></div>
+  </div>
+</div>

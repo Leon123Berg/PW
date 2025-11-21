@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="nl">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="{{ description }}" />
+        <meta name="author" content="" />
+        <title>{{title}}</title>
+        <link rel="stylesheet" href="{% stylesheet_url 'assets/css/theme.bundle.css' %}" />
+		 <link
+      rel="stylesheet"
+      href="{% stylesheet_url 'assets/css/libs.bundle.css' %}"
+    />
+        <link rel="icon" type="image/png" href="{% file_asset_url 'assets_favicon' %}" />
+    </head>
+    <body class="d-flex align-items-center bg-auth border-top border-top-2 border-primary">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12 col-md-5 col-xl-4 my-5">
+                    {% if flash.success %}
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">{{ flash.success | raw }}<button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="Close"></button></div>
+                    {% endif %} {% if flash.error %}
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">{{ flash.error | raw }}<button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="Close"></button></div>
+                    {% endif %} {% if flash.info %}
+                    <div class="alert alert-info alert-dismissible fade show" role="alert">{{ flash.info | raw }}<button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="Close"></button></div>
+                    {% endif %}{{yield}}
+                </div>
+            </div>
+        </div>
+        <script src="{% javascript_url 'assets/js/vendor.bundle.js' %}"></script>
+        <script src="{% javascript_url 'assets/js/theme.bundle.js' %}"></script>
+		   <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script>
+      feather.replace();
+    </script>
+    </body>
+</html>
