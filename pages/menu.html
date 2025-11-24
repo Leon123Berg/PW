@@ -10,8 +10,7 @@
         <div class="col-md-6 col-lg-4 d-flex flex-column align-items-center justify-content-center">
           <form id="newProjectForm" method="post" action="/positiefwonen/project/menu/post">
             {{ csrf_tag }}
-            <input type="hidden" name="company_uuid" value="{{current_web_user.company.uuid}}">
-            <input type="hidden" name="consumer" value="false">
+            <input type="hidden" name="uuid" value="{{current_web_user.company.uuid}}">
             <button type="submit"
               class="btn btn-outline-primary bg-primary text-white d-flex flex-column align-items-center justify-content-center">
               <svg xmlns="http://www.w3.org/2000/svg" width="200px" height="200px" fill="currentColor"
@@ -50,7 +49,8 @@
       <div class="row menuBtns">
         <div class="col-md-0 col-lg-2"></div>
         <div class="col-md-6 col-lg-8 d-flex flex-column align-items-center justify-content-center">
-          <a target="_blank" href="https://www.wdwa.nl/documentatie-en-inspiratie/" type="button" class="btn btn-outline-primary bg-primary text-white d-flex flex-column align-items-center justify-content-center w-100 py-5">
+          <a target="_blank" href="https://www.wdwa.nl/documentatie-en-inspiratie/" type="button"
+            class="btn btn-outline-primary bg-primary text-white d-flex flex-column align-items-center justify-content-center w-100 py-5">
             <label class="p-2 align-self-center display-6">Documentatie en inspiratie</label>
           </a>
         </div>

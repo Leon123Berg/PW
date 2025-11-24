@@ -1,11 +1,9 @@
 <div class="card shadow-lg border-0">
   <div class="card-body p-8">
     <div class="text-center">
-      <img 
-        src="https://assets.eu.bettyblocks.com/eu-central-1-3d561c1df74a42b0a4fa2a5715c10ff0/assets/files/positief_wonen_logo-removebg-preview" 
-        alt="Positief Wonen Logo" 
-        class="img-fluid w-75"
-      />
+      <img
+        src="https://assets.eu.bettyblocks.com/eu-central-1-3d561c1df74a42b0a4fa2a5715c10ff0/assets/files/positief_wonen_logo-removebg-preview"
+        alt="Positief Wonen Logo" class="img-fluid w-75" />
     </div>
     <div class="text-uppercase fw-bold mb-3 text-success fs-5 text-center">
       DOE DE CHECK IN 1 MINUUT!
@@ -13,7 +11,7 @@
     <h2 class="mb-4 fw-bold text-dark display-5 text-center">
       Subsidie voor huis isoleren
     </h2>
-    
+
     <div class="d-flex align-items-start mb-3">
       <span class="me-3 fs-5 text-success">✓</span>
       <span class="text-dark">Subsidie mogelijk vanaf 1 isolatiemaatregel</span>
@@ -27,14 +25,12 @@
       <span class="text-dark">Materialen voldoen aan de ISDE-subsidie-eisen</span>
     </div>
 
-    <form id="newProjectForm" method="post" action="/positiefwonen/project/menu/post">
+    <form id="newProjectForm" method="post" action="/positiefwonen/consument/post">
       {{ csrf_tag }}
       <input type="hidden" name="company_uuid" value="d3e36156-dd4b-4029-b0a3-937e5185224d">
-      <input type="hidden" name="consumer" value="true">
       <button type="submit" class="btn btn-outline-dark w-100 fw-bold py-3">
         Doe de subsidiecheck
       </button>
     </form>
   </div>
 </div>
-

@@ -339,6 +339,8 @@ _Alle property-namen volgen de Benaming in Betty Blocks. `id`, `created_at` en `
 | time_reset_token | Time reset token | Date time |
 | type_gebruiker | Type gebruiker | List |
 | updated_at | Updated at | Date time |
+| create_project_allowed | Create project allowed | Checkbox |
+| consumer | Consument | Checkbox |
 
 **Relaties**
 - `company` – Belongs to (`Company`)

@@ -278,6 +278,20 @@ document.addEventListener('DOMContentLoaded', (event) => {
       const standKwhPrijs = document.getElementById("kwhprijs").value;
       const allInputs = document.querySelectorAll("input");
       const kadasterBtn = document.getElementById("kadasterBtn");
+      const kadasterError = document.getElementById("kadasterError");
+      const akkoordCheckbox = document.getElementById("akkoord_delen");
+      let kadasterAttempted = false;
+      const requiredFieldIds = [
+        "postcode",
+        "huisnummer",
+        "toevoeging",
+        "voornaam",
+        "tussenvoegsel",
+        "achternaam",
+        "email",
+        "telefoonnummer",
+        "gezinsleden",
+      ];
   
       function getFieldValue(id) {
         return document.getElementById(id)?.value;
@@ -345,8 +359,38 @@ document.addEventListener('DOMContentLoaded', (event) => {
       for (var i = 0; i < checkboxes.length; i++) {
         checkboxes[i].onclick = limitCheckboxSelection;
       }
-  
+
       limitCheckboxSelection();
+
+      // Toggle beschrijving inputveld voor btncheckReden7
+      const reden7Checkbox = document.getElementById("btncheckReden7");
+      const redenBeschrijvingContainer = document.getElementById("redenBeschrijvingContainer");
+      const redenBeschrijvingInput = document.getElementById("redenBeschrijving");
+
+      function toggleRedenBeschrijving() {
+        if (reden7Checkbox && redenBeschrijvingContainer) {
+          if (reden7Checkbox.checked) {
+            redenBeschrijvingContainer.classList.remove("d-none");
+          } else {
+            redenBeschrijvingContainer.classList.add("d-none");
+            if (redenBeschrijvingInput) {
+              redenBeschrijvingInput.value = "";
+            }
+          }
+        }
+      }
+
+      if (reden7Checkbox) {
+        reden7Checkbox.addEventListener("change", toggleRedenBeschrijving);
+        // Check initial state
+        toggleRedenBeschrijving();
+      }
+
+      // Add change listener to beschrijving input to save on change
+      if (redenBeschrijvingInput) {
+        redenBeschrijvingInput.addEventListener("change", postToEndpoint);
+        redenBeschrijvingInput.addEventListener("input", postToEndpoint);
+      }
   
       const doelstellingInput0 = document.getElementById("doelstellingInput0");
       const doelstellingInput1 = document.getElementById("doelstellingInput1");
@@ -520,11 +564,83 @@ document.addEventListener('DOMContentLoaded', (event) => {
         }, 30000);
       }
   
+      function toggleInvalidState(element, isValid) {
+        if (!element) return;
+        if (isValid) {
+          element.classList.remove("is-invalid");
+        } else {
+          element.classList.add("is-invalid");
+        }
+      }
+
+      function validateKlantgegevens(showFeedback = false) {
+        let isValid = true;
+        requiredFieldIds.forEach((id) => {
+          const field = document.getElementById(id);
+          if (!field) return;
+          const value = field.value ? field.value.trim() : "";
+          const fieldValid = value !== "";
+          if (showFeedback) {
+            toggleInvalidState(field, fieldValid);
+          } else {
+            field.classList.remove("is-invalid");
+          }
+          if (!fieldValid) {
+            isValid = false;
+          }
+        });
+        if (akkoordCheckbox) {
+          if (!akkoordCheckbox.checked) {
+            if (showFeedback) {
+              akkoordCheckbox.classList.add("is-invalid");
+            }
+            isValid = false;
+          } else {
+            akkoordCheckbox.classList.remove("is-invalid");
+          }
+        }
+        if (kadasterError) {
+          if (showFeedback && !isValid) {
+            kadasterError.classList.remove("d-none");
+          } else {
+            kadasterError.classList.add("d-none");
+          }
+        }
+        if (kadasterBtn) {
+          kadasterBtn.disabled = !isValid;
+        }
+        return isValid;
+      }
+
+      requiredFieldIds.forEach((id) => {
+        const field = document.getElementById(id);
+        if (field) {
+          field.addEventListener("input", () =>
+            validateKlantgegevens(kadasterAttempted)
+          );
+        }
+      });
+      if (akkoordCheckbox) {
+        akkoordCheckbox.addEventListener("change", () =>
+          validateKlantgegevens(kadasterAttempted)
+        );
+      }
+
+      if (kadasterBtn) {
+        kadasterBtn.disabled = true;
+      }
+
       kadasterBtn.addEventListener("click", function (event) {
         event.preventDefault();
+        kadasterAttempted = true;
+        if (!validateKlantgegevens(true)) {
+          return;
+        }
         postToKadasterEndpoint();
         showLoaderAddComments();
       });
+
+      validateKlantgegevens(false);
   
       Array.from(energielabels).forEach((label, index) => {
         label.addEventListener("click", function () {
@@ -669,9 +785,11 @@ document.addEventListener('DOMContentLoaded', (event) => {
           vwOptions: [
             ...getCheckedValues("btncheckVw", 15),
             ...getCheckedValues("btncheckVentileren", 3),
-            ...getCheckedValues("btncheckReden", 6),
+            ...getCheckedValues("btncheckReden", 7),
             ...getCheckedValues("btncheckWoningeigenschap", 3),
           ],
+
+          redenBeschrijving: getFieldValue("redenBeschrijving"),
   
           btnradioTapwater: getFieldCheckedValue([
             "btnradioTapwater1",

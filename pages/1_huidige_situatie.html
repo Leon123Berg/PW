@@ -3,6 +3,11 @@
   {% include 'spinnerLoader' %}
   <!-- Einde: Dit is de spinner / loader animatie -->
 
+  {% assign cadaster_data_loaded = false %}
+  {% if klant.straatnaam or klant.plaats or module.google_street_view_link or module.bouwjaar %}
+    {% assign cadaster_data_loaded = true %}
+  {% endif %}
+
   <!-- Huidige situatie -->
     <div class="row align-items-center">
       <div class="col-12 col-md-8"></div>
@@ -47,6 +52,7 @@
                   id="postcode"
                   placeholder="Postcode"
                   value="{{ klant.postcode }}"
+                  required
                 />
                 <label for="postcode">Postcode</label>
               </div>
@@ -60,6 +66,7 @@
                   id="huisnummer"
                   placeholder="Huisnummer"
                   value="{{ klant.huisnummer }}"
+                  required
                 />
                 <label for="huisnummer">Huisnummer</label>
               </div>
@@ -73,6 +80,7 @@
                   id="toevoeging"
                   placeholder="Toevoeging"
                   value="{{ klant.huisletter }}"
+                  required
                 />
                 <label for="toevoeging">Toevoeging</label>
               </div>
@@ -90,6 +98,7 @@
                   id="voornaam"
                   placeholder="Voornaam"
                   value="{{ klant.voornaam }}"
+                  required
                 />
                 <label for="voornaam">Voornaam</label>
               </div>
@@ -103,6 +112,7 @@
                   id="tussenvoegsel"
                   placeholder="tussenvoegsel"
                   value="{{ klant.tussenvoegsel }}"
+                  required
                 />
                 <label for="tussenvoegsel">Tussenvoegsel</label>
               </div>
@@ -116,6 +126,7 @@
                   id="achternaam"
                   placeholder="Achternaam"
                   value="{{ klant.achternaam }}"
+                  required
                 />
                 <label for="achternaam">Achternaam</label>
               </div>
@@ -132,6 +143,7 @@
                   id="email"
                   placeholder="Email"
                   value="{{ klant.email }}"
+                  required
                 />
                 <label for="email">Email</label>
               </div>
@@ -148,8 +160,26 @@
                   id="telefoonnummer"
                   placeholder="Telefoonnummer"
                   value="{{ klant.telefoonnummer }}"
+                  required
                 />
                 <label for="telefoonnummer">Telefoonnummer</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="row mb-3">
+            <div class="col-12">
+              <div class="form-floating">
+                <input
+                  type="number"
+                  class="form-control"
+                  id="gezinsleden"
+                  placeholder="Gezinsleden"
+                  value="{{ module.inwoners }}"
+                  min="1"
+                  required
+                />
+                <label for="gezinsleden">Aantal gezinsleden</label>
               </div>
             </div>
           </div>
@@ -160,6 +190,7 @@
                 type="checkbox"
                 class="form-check-input checkbox-primary"
                 id="akkoord_delen"
+                required
                 {% if klant.delen_akkoord %}
                   checked
                 {% endif %}
@@ -174,29 +205,18 @@
           </div>
 
           <div class="row mb-3">
-            <div class="col-md-6">
-              <!-- gezinsleden -->
-              <div class="form-floating">
-                <input
-                  type="number"
-                  class="form-control"
-                  id="gezinsleden"
-                  placeholder="Gezinsleden"
-                  value="{{ module.inwoners }}"
-                  min="1"
-                  required
-                />
-                <label for="gezinsleden">Aantal gezinsleden</label>
-              </div>
-            </div>
-            <div class="col-md-6">
+            <div class="col-12">
               <!-- Submit naar Kadaster -->
-              <button id="kadasterBtn" class="btn w-100 btn-primary">
+              <button id="kadasterBtn" type="button" class="btn w-100 btn-primary" disabled>
                 Haal gegevens op
               </button>
+              <div id="kadasterError" class="text-danger mt-2 d-none">
+                Vul eerst alle bovenstaande velden in.
+              </div>
             </div>
           </div>
 
+          <div class="cadaster-results">
           {% if klant.kadaster_api_failed %}
           <div class="row mb-3">
             <div class="col-md-12">
@@ -209,7 +229,7 @@
           {% endif %}
 
           <div class="row mb-3">
-            <div class="col-12 col-md-6">
+            <div class="col-12 col-md-3">
               <!-- Straatnaam -->
               <div class="form-floating">
                 <input
@@ -223,7 +243,7 @@
                 <label for="straatnaam">Straatnaam</label>
               </div>
             </div>
-            <div class="col-12 col-md-6">
+            <div class="col-12 col-md-3">
               <!-- Plaats -->
               <div class="form-floating">
                 <input
@@ -237,11 +257,40 @@
                 <label for="plaats">Plaats</label>
               </div>
             </div>
+            <div class="col-12 col-md-3">
+              <!-- Bouwjaar -->
+              <div class="form-floating">
+                <input
+                  disabled
+                  type="text"
+                  class="form-control"
+                  id="leeftijdPand"
+                  placeholder="Bouwjaar"
+                  value="{{ module.bouwjaar }}"
+                />
+                <label for="leeftijdPand">Bouwjaar</label>
+              </div>
+            </div>
+            <div class="col-12 col-md-3">
+              <!-- m2 -->
+              <div class="form-floating">
+                <input
+                  disabled
+                  type="text"
+                  class="form-control"
+                  id="oppervlakteWoning"
+                  placeholder="m2"
+                  value="{{ module.oppervlakte_woning }}"
+                />
+                <label for="oppervlakteWoning">m2</label>
+              </div>
+            </div>
+          </div>
           </div>
         </form>
       </div>
 
-      <div class="col-md-4">
+      <div class="col-md-4 cadaster-results">
         <div class="row pb-1">
           <!-- Afbeeldingen voor huis -->
           {% if module.google_street_view_link != nil and module.google_street_view_link != '' %}
@@ -261,74 +310,13 @@
           />
           {% endif %}
         </div>
-        {% if module.google_street_view_link != nil and
-        module.google_street_view_link != '' %}
-        <div class="row" style="margin-top: 99px;">
-          <!-- Leeftijd van het pand -->
-          <div class="form-floating col-md-6">
-            <input
-              disabled
-              type="text"
-              class="form-control"
-              id="leeftijdPand"
-              placeholder="Bouwjaar"
-              value="{{ module.bouwjaar }}"
-            />
-            <label for="leeftijdPand" style="padding-left: 40px"
-              >Bouwjaar</label
-            >
-          </div>
-          <div class="form-floating col-md-6">
-            <input
-              disabled
-              type="text"
-              class="form-control"
-              id="oppervlakteWoning"
-              placeholder="m2"
-              value="{{ module.oppervlakte_woning }}"
-            />
-            <label for="oppervlakteWoning" style="padding-left: 40px"
-              >m2</label
-            >
-          </div>
-        </div>
-        {% else %}
-        <div class="row" style="margin-top: 430px">
-          <!-- Leeftijd van het pand -->
-          <div class="form-floating col-md-6">
-            <input
-              disabled
-              type="text"
-              class="form-control"
-              id="leeftijdPand"
-              placeholder="Bouwjaar"
-              value="{{ module.bouwjaar }}"
-            />
-            <label for="leeftijdPand" style="padding-left: 40px"
-              >Bouwjaar</label
-            >
-          </div>
-          <div class="form-floating col-md-6">
-            <input
-              disabled
-              type="text"
-              class="form-control"
-              id="oppervlakteWoning"
-              placeholder="m2"
-              value="{{ module.oppervlakte_woning }}"
-            />
-            <label for="oppervlakteWoning" style="padding-left: 40px"
-              >m2</label
-            >
-          </div>
-        </div>
-        {% endif %}
       </div>
     </div>
   </div>
 
+  <div class="cadaster-results">
   <!-- Huidige energielabel -->
-  <div class="container-fluid p-8 border-right border-left">
+  <div class="container-fluid p-8">
     <div class="row mb-3">
       <div class="col-12">
         <div class="row pb-3">
@@ -342,63 +330,119 @@
   </div>
 
 <!-- Risico analyse -->
-<div class="container-fluid pt-0 p-8" style="background-color: #f1f1f1">
+<div class="container-fluid p-8" style="background-color: #f1f1f1">
   <div class="row">
     <div class="col-md-12 p-1 pb-5 pt-7">
       <h2 class="ms-3">
         <b>Kies jouw 3 belangrijkste redenenen om te verduurzamen</b>
       </h2>
     </div>
-    {% for question in questions %}
-      {% if question.question == "Kies 3 redenenen" %}
-        <div class="row d-flex justify-content-center align-items-middle">
-          <div class="col-12 d-flex justify-content-center align-items-middle">
-            <div
-              class="btn-group"
-              role="group"
-              aria-label="Basic checkbox toggle button group"
-            >
-              <div class="row fs-6">
-                {% assign options = question.pwmultiplechoices | sort: "order" %} 
-                {% for option in options %} 
-                  {% if option.active %}
-                  <div
-                    class="col-md-2 col text-center d-flex flex-column justify-content-center align-items-center"
+  {% for question in questions %}
+    {% if question.question == "Kies 3 redenenen" %}
+      <div class="row d-flex justify-content-center align-items-middle">
+        <div class="col-12 d-flex justify-content-center align-items-middle">
+          <div
+            class="btn-group"
+            role="group"
+            aria-label="Basic checkbox toggle button group"
+          >
+            <div class="row fs-6">
+              {% assign options = question.pwmultiplechoices | sort: "order" %} 
+              {% for option in options %} 
+                {% if option.active %}
+                <div
+                  class="col-md-2 col text-center d-flex flex-column justify-content-center align-items-center"
+                >
+                  <input 
+                    type="checkbox" 
+                    class="btn-check redenenChkBoxes"
+                    value={{option.value}} 
+                    id="{{option.dom_value}}"
+                    autocomplete="off" 
+                    value="{{option.beschrijving}}" 
+                    {% for object in module.pwmultiplechoices %} {% if object.beschrijving == option.beschrijving %} checked {% endif %} {% endfor %} />
+                  <label
+                    class="btn btn-outline-primary bg-primary text-white"
+                    for="{{option.dom_value}}"
                   >
-                    <input 
-                      type="checkbox" 
-                      class="btn-check redenenChkBoxes"
-                      value={{option.value}} 
-                      id="{{option.dom_value}}"
-                      autocomplete="off" 
-                      value="{{option.beschrijving}}" 
-                      {% for object in module.pwmultiplechoices %} {% if object.beschrijving == option.beschrijving %} checked {% endif %} {% endfor %} />
-                    <label
-                      class="btn btn-outline-primary bg-primary text-white"
-                      for="{{option.dom_value}}"
-                    >
-                      {% if option.icon %} {{ option.icon | raw }} {% else %} Checkbox{% endif %}
-                    </label>
-                    <label class="p-2 text-nowrap">{{option.beschrijving}}</label>
-                  </div>
-                  {% endif %} 
-                {% endfor %}
-              </div>
+                    {% if option.icon %} {{ option.icon | raw }} {% else %} Checkbox{% endif %}
+                  </label>
+                  <label class="p-2 text-nowrap">{{option.beschrijving}}</label>
+                </div>
+                {% endif %} 
+              {% endfor %}
             </div>
           </div>
         </div>
-      {% endif %} 
-    {% endfor %}
+      </div>
+    {% endif %} 
+  {% endfor %}
 
-    <div class="container-fluid pt-5">
-      <div class="row">
-        <div class="col-md-12 p-1 pb-3 text-primary">
-          <h2 class="ms-3"><b> Huidig energieverbruik </b></h2>
+  <!-- Inputveld voor beschrijving wanneer btncheckReden7 is aangevinkt -->
+  <div id="redenBeschrijvingContainer" class="row mt-4 d-none">
+    <div class="col-12">
+      <div class="form-floating">
+        <textarea
+          class="form-control"
+          id="redenBeschrijving"
+          placeholder="Beschrijving"
+          style="height: 100px"
+        ></textarea>
+        <label for="redenBeschrijving">Beschrijving</label>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid p-8">
+  <div class="row">
+    <div class="col-md-12 p-1 pb-3 text-primary">
+      <h2 class="ms-3"><b> Huidig energieverbruik </b></h2>
+    </div>
+  </div>
+    <div class="row bg-white">
+    <div class="col-md-6 border border-primary py-6 my-auto">
+      Elektra gebruik per jaar
+      <div style="display: inline-block; position: relative;">
+        <i data-feather="info" class="tooltip-trigger">i</i>
+        <div class="custom-tooltip" style="display: none; position: absolute; bottom: 100%; left: 50%; transform: translateX(-50%); padding: 5px; background-color: black; color: white; border-radius: 5px; z-index: 100;">
+          Dit is een schatting van je verbruik, je kan zelf jouw huidige verbruik invullen.
         </div>
       </div>
-      <div class="row bg-white">
+    </div>
+      <div class="col-md-2 border border-primary d-flex align-items-center">
+        <div class="input-group mb-1 w-100">
+          <div class="form-floating w-100">
+            <input
+              type="number"
+              class="form-control form-control-flush"
+              id="kwhInput"
+              min="0"
+              value="{{ module.kwh_per_jaar }}"
+              placeholder="Hoeveel"
+            />
+            <label for="kwhInput">kWh/jaar</label>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 border border-primary d-flex align-items-center">
+        <div class="input-group mb-1 w-100">
+          <div class="form-floating w-100">
+            <input
+              type="number"
+              class="form-control form-control-flush text-end"
+              id="kwhOutput"
+              value="{{ module.kwh_bedrag_per_jaar | ceil }}"
+              placeholder="€/jaar"
+            />
+            <label for="kwhOutput">€/jaar</label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row bg-white">
       <div class="col-md-6 border border-primary py-6 my-auto">
-        Elektra gebruik per jaar
+        Gas gebruik per jaar
         <div style="display: inline-block; position: relative;">
           <i data-feather="info" class="tooltip-trigger">i</i>
           <div class="custom-tooltip" style="display: none; position: absolute; bottom: 100%; left: 50%; transform: translateX(-50%); padding: 5px; background-color: black; color: white; border-radius: 5px; z-index: 100;">
@@ -406,116 +450,76 @@
           </div>
         </div>
       </div>
-        <div class="col-md-2 border border-primary d-flex align-items-center">
-          <div class="input-group mb-1 w-100">
-            <div class="form-floating w-100">
-              <input
-                type="number"
-                class="form-control form-control-flush"
-                id="kwhInput"
-                min="0"
-                value="{{ module.kwh_per_jaar }}"
-                placeholder="Hoeveel"
-              />
-              <label for="kwhInput">kWh/jaar</label>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4 border border-primary d-flex align-items-center">
-          <div class="input-group mb-1 w-100">
-            <div class="form-floating w-100">
-              <input
-                type="number"
-                class="form-control form-control-flush text-end"
-                id="kwhOutput"
-                value="{{ module.kwh_bedrag_per_jaar | ceil }}"
-                placeholder="€/jaar"
-              />
-              <label for="kwhOutput">€/jaar</label>
-            </div>
+      <div class="col-md-2 border border-primary d-flex align-items-center">
+        <div class="input-group mb-1 w-100">
+          <div class="form-floating w-100">
+            <input
+              type="number"
+              class="form-control form-control-flush"
+              id="gasInput"
+              min="0"
+              value="{{ module.gas_per_jaar }}"
+              placeholder="Hoeveel"
+            />
+            <label for="gasInput">m3/jaar</label>
           </div>
         </div>
       </div>
-      <div class="row bg-white">
-        <div class="col-md-6 border border-primary py-6 my-auto">
-          Gas gebruik per jaar
-          <div style="display: inline-block; position: relative;">
-            <i data-feather="info" class="tooltip-trigger">i</i>
-            <div class="custom-tooltip" style="display: none; position: absolute; bottom: 100%; left: 50%; transform: translateX(-50%); padding: 5px; background-color: black; color: white; border-radius: 5px; z-index: 100;">
-              Dit is een schatting van je verbruik, je kan zelf jouw huidige verbruik invullen.
-            </div>
+      <div class="col-md-4 border border-primary d-flex align-items-center">
+        <div class="input-group mb-1 w-100">
+          <div class="form-floating w-100">
+            <input
+              type="number"
+              class="form-control form-control-flush text-end"
+              id="gasOutput"
+              value="{{ module.gas_bedrag_per_jaar | ceil }}"
+              placeholder="€/jaar"
+            />
+            <label for="gasOutput">€/jaar</label>
           </div>
-        </div>
-        <div class="col-md-2 border border-primary d-flex align-items-center">
-          <div class="input-group mb-1 w-100">
-            <div class="form-floating w-100">
-              <input
-                type="number"
-                class="form-control form-control-flush"
-                id="gasInput"
-                min="0"
-                value="{{ module.gas_per_jaar }}"
-                placeholder="Hoeveel"
-              />
-              <label for="gasInput">m3/jaar</label>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4 border border-primary d-flex align-items-center">
-          <div class="input-group mb-1 w-100">
-            <div class="form-floating w-100">
-              <input
-                type="number"
-                class="form-control form-control-flush text-end"
-                id="gasOutput"
-                value="{{ module.gas_bedrag_per_jaar | ceil }}"
-                placeholder="€/jaar"
-              />
-              <label for="gasOutput">€/jaar</label>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <!-- First Column -->
-        <div
-          class="col-md-8 border-left border-light py-6 bg-primary text-white d-flex align-items-center"
-        >
-          <div class="input-group mb-1 w-100">
-            <div class="form-floating w-100">
-              <b>Totaal energieverbruik</b>
-            </div>
-          </div>
-        </div>
-
-        <div
-          class="col-md-4 border-left border-light py-6 bg-primary text-white d-flex align-items-center"
-        >
-          <div class="input-group mb-1 w-100">
-            <div class="form-floating w-100">
-              <output
-                class="form-control form-control-flush bg-primary text-white text-end"
-                id="energieVerbruikOutput"
-                for="energieVerbruikOutput"
-                >
-                {{ module.totaal_bedrag_energieverbruik_per_jaar | ceil }}
-              </output>
-              <label for="energieVerbruikOutput">€/jaar</label>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="row pt-3 pb-3">
-        <div
-          class="col-md-12 border border-5 rounded-3 border-dark p-5 my-2 bg-white"
-        >
-          <strong>Let op!</strong> Automatisch wordt gerekend met het gemiddeld
-          elektra en gas verbruik voor deze woonsituatie en het actuale
-          gemiddelde elektra tarief van {{kwhprijs.waarde | to_currency: "€", 2,".", ","}} per kWh en gas tarief van {{gasprijs.waarde| to_currency: "€", 2,".", ","}} per m3. Voor een exacte berekening voer je het echte
-          verbruik en (totaal) energielasten van de klant in.
         </div>
       </div>
     </div>
+    <div class="row">
+      <!-- First Column -->
+      <div
+        class="col-md-8 border-left border-light py-6 bg-primary text-white d-flex align-items-center"
+      >
+        <div class="input-group mb-1 w-100">
+          <div class="form-floating w-100">
+            <b>Totaal energieverbruik</b>
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="col-md-4 border-left border-light py-6 bg-primary text-white d-flex align-items-center"
+      >
+        <div class="input-group mb-1 w-100">
+          <div class="form-floating w-100">
+            <output
+              class="form-control form-control-flush bg-primary text-white text-end"
+              id="energieVerbruikOutput"
+              for="energieVerbruikOutput"
+              >
+              {{ module.totaal_bedrag_energieverbruik_per_jaar | ceil }}
+            </output>
+            <label for="energieVerbruikOutput">€/jaar</label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row pt-3 pb-3">
+      <div
+        class="col-md-12 border border-2 rounded-3 border-dark p-5 my-2 bg-white"
+      >
+        <strong>Let op!</strong> Automatisch wordt gerekend met het gemiddeld
+        elektra en gas verbruik voor deze woonsituatie en het actuale
+        gemiddelde elektra tarief van {{kwhprijs.waarde | to_currency: "€", 2,".", ","}} per kWh en gas tarief van {{gasprijs.waarde| to_currency: "€", 2,".", ","}} per m3. Voor een exacte berekening voer je het echte
+        verbruik en (totaal) energielasten van de klant in.
+      </div>
+    </div>
+</div>
 
     <!-- Jouw woonsituatie -->
     <div
@@ -2264,10 +2268,11 @@
       <!--  Einde hoe kook je thuis?  -->
     </div>
 
-    <div class="container-fluid p-4 d-flex justify-content-end">
+    <div class="container-fluid pt-4 pb-4 mb-0 d-flex justify-content-end">
       <a href="/positiefwonen/project/isolatie-check/{{project.uuid}}">
         <button type="button" class="btn btn-primary">Volgende pagina</button>
       </a>
     </div>
   </div>
+</div>
 </div>

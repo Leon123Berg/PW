@@ -59,12 +59,16 @@
       </div>
     </div>
 
-    <div class="container">
+    <div class="container px-0">
       {% include 'navbar' %}
-		
-      <!-- Hier wordt de pagina ingeladen vanuit de endpoints. -->
-      {{yield}}
-</div>
+      <div class="bg-light-subtle pb-5">
+        <div class="min-vh-100 border-start border-end border-2 bg-white" style="border-color: #dfe6ee;">
+          <div class="px-4 py-4">
+            {{yield}}
+          </div>
+        </div>
+      </div>
+    </div>
  <script src="https://unpkg.com/feather-icons"></script>
  <script src="https://code.jquery.com/jquery-3.7.1.slim.min.js" integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8=" crossorigin="anonymous"></script>
 		  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>

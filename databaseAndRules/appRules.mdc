@@ -42,10 +42,8 @@ De Positief Wonen-app is een verduurzamingsapp gebouwd op Betty Blocks 5. Consul
     - **GEEN inline styling** (`style="..."`) tenzij expliciet gevraagd door de gebruiker
     - **GEEN custom CSS** in de pagina zelf, gebruik alleen Bootstrap classes
 12. **ALTIJD** voeg `{{ csrf_tag }}` toe aan elke POST-call in formulieren. Dit is verplicht voor beveiliging en functionaliteit.
-13. **POST naar `/positiefwonen/project/menu/post`**: Moet altijd de volgende parameters bevatten:
-    - `company_uuid`: 
-      - In `menu.html`: gebruik `{{current_web_user.company.uuid}}`
-      - In `consument.html`: gebruik hardcoded waarde `d3e36156-dd4b-4029-b0a3-937e5185224d`
-    - `consumer`: 
-      - In `menu.html`: waarde `false`
-      - In `consument.html`: waarde `true`
+13. **POST calls**:
+    - **`/positiefwonen/project/menu/post`** (`menu.html`):
+      - Parameter: `uuid` met waarde `{{current_web_user.company.uuid}}`
+    - **`/positiefwonen/consument/post`** (`consument.html`):
+      - Parameter: `company_uuid` met hardcoded waarde `d3e36156-dd4b-4029-b0a3-937e5185224d`
