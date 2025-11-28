@@ -1,0 +1,49 @@
+always apply
+
+# App Rules & Reference
+
+## Context
+De Positief Wonen-app is een verduurzamingsapp gebouwd op Betty Blocks 5. Consultants van PW doorlopen normaal samen met de klant de woonsituatie tot een rapport en investeringsvoorstel. De uitbreiding richt zich op een consumentgerichte frontend-flow zodat leads zelfstandig het traject kunnen doorlopen; alle bestanden in deze repo behoren tot die frontend. De backoffice blijft buiten scope. Het mapje `zzoriginals` is een referentiekopie van de huidige productie en blijft onaangeroerd.
+
+## Frontend Endpoints
+| Bestand | Endpoint |
+| --- | --- |
+| `pages/registereren.html` | https://wdwa-development.bettywebblocks.com/positiefwonen/registreren |
+| `pages/consument.html` | https://wdwa-development.bettywebblocks.com/positiefwonen/consument |
+| `pages/menu.html` | https://wdwa-development.bettywebblocks.com/positiefwonen/project/menu |
+| `pages/1_huidige_situatie.html` | https://wdwa-development.bettywebblocks.com/positiefwonen/project/huidige-situatie/:uuid |
+| `pages/2_isolatie_check.html` | https://wdwa-development.bettywebblocks.com/positiefwonen/project/isolatie-check/:uuid |
+| `pages/3_duurzaam_verwarmen.html` | https://wdwa-development.bettywebblocks.com/positiefwonen/project/duurzaam-verwarmen/:uuid |
+| `pages/4_zonnepanelen.html` | https://wdwa-development.bettywebblocks.com/positiefwonen/project/zonnepanelen/:uuid |
+| `pages/5_samenvatting.html` | https://wdwa-development.bettywebblocks.com/positiefwonen/project/samenvatting-advies/:uuid |
+
+## Regels
+1. Bestanden in `zzoriginals/` blijven altijd ongewijzigd; dit is de veilige kopie van de huidige app.
+2. Alle overige bestanden mogen worden aangepast. Nieuwe modellen of properties zijn toegestaan, maar registreer elke toevoeging direct in `databaseAndRules/bettyBlocksDatabase.md`.
+3. Pas consequent de user rules uit de projectinstellingen toe (communicatiestijl, besluitvorming, enz.).
+4. GitHub: `git@github.com:lemmen6/positief-wonen.git` (MacBook Leon, SHA256 fingerprint `cr5fdv7LpjMtb51G2tVz2eIhohIaLMxhWhcJM5YFCHY`) met read/write-toegang.
+5. Betty Blocks genereert `created_at`, `updated_at` en `id` automatisch. Houd modellen onder de 40 properties om performance te behouden.
+6. Meld elke nieuwe POST-call of extra input-parameter direct, zodat de Betty Blocks-kant kan worden bijgewerkt.
+7. De `:uuid` in de routes komt uit het `pwProject`-model. Inputwaardes landen op het endpoint en triggeren blokken daar; hou wijzigingen in `js/user.js` minimaal om compatibiliteit te bewaren.
+8. De frontend is gebaseerd op Bootstrap. Gebruik in eerste instantie Bootstrap-componenten en beperk maatwerk in `css/_user.css` tot het noodzakelijke.
+9. Backoffice-logica draait op het `User`-model; de consumentgerichte frontend draait op `Webuser`. Houd dat onderscheid aan bij nieuwe features en APIs.
+10. **PAGINA STRUCTUUR**: Elke pagina onder `pages/` rendert via een layout uit `pages/layouts/`:
+    - Standaard layout: `default.html` (met header, navbar, etc.)
+    - Alternatief: `center.html` (gecentreerde content, zonder header/navbar)
+    - Dit betekent:
+      - **GEEN** volledige HTML-structuur nodig (geen `<html>`, `<head>`, `<body>` tags)
+      - **GEEN** meta data toevoegen (title, description, etc. - dit komt uit de layout)
+      - **GEEN** CSS/JS links toevoegen (Bootstrap en _user.css zijn al gelinkt in de layout)
+      - Begin direct met content (div's, containers, etc.)
+      - Scripts zijn al geladen via de layout, voeg geen extra scripts toe
+11. **STYLING REGELS**:
+    - Gebruik **ALLEEN** standaard Bootstrap kleuren (primary, secondary, success, danger, warning, info, light, dark)
+    - Gebruik **ALLEEN** Bootstrap utility classes voor styling
+    - **GEEN inline styling** (`style="..."`) tenzij expliciet gevraagd door de gebruiker
+    - **GEEN custom CSS** in de pagina zelf, gebruik alleen Bootstrap classes
+12. **ALTIJD** voeg `{{ csrf_tag }}` toe aan elke POST-call in formulieren. Dit is verplicht voor beveiliging en functionaliteit.
+13. **POST calls**:
+    - **`/positiefwonen/project/menu/post`** (`menu.html`):
+      - Parameter: `uuid` met waarde `{{current_web_user.company.uuid}}`
+    - **`/positiefwonen/consument/post`** (`consument.html`):
+      - Parameter: `company_uuid` met hardcoded waarde `d3e36156-dd4b-4029-b0a3-937e5185224d`
