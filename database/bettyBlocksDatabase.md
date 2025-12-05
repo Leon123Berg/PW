@@ -184,6 +184,7 @@ _Alle property-namen volgen de Benaming in Betty Blocks. `id`, `created_at` en `
 **Properties**
 | Name | Label | Type |
 | --- | --- | --- |
+| active | Actief | Checkbox |
 | bad | Bad | Text (single line) |
 | besparing_bodemisolatie | Besparing bodemisolatie | Number |
 | besparing_dakisolatie | Besparing dakisolatie | Number |
@@ -199,10 +200,12 @@ _Alle property-namen volgen de Benaming in Betty Blocks. `id`, `created_at` en `
 | leidingen | Leidingen | Number |
 | meerdere_warm_waterpunten | Meerdere warm waterpunten | List |
 | oppervlakte | Oppervlakte | Number |
+| payload_code | Payload code | Text (single line) |
 | raam_oppervlakte | Raam oppervlakte | Number |
 | spouwmuur_dikte_cm | Spouwmuur dikte cm | Number |
 | spouwmuur_oppervlakte | Spouwmuur oppervlakte | Number |
-| standaard_energiebron | Standaard energiebron | Text (single line) |
+| standaard_energiebron | Standaard energiebron | Text (multi line) |
+| svg_image | SVG image | Text (single line) |
 | updated_at | Updated at | Date time |
 | vloer_oppervlakte | Vloer oppervlakte | Number |
 | woningtype | Woningtype | List |
@@ -254,6 +257,7 @@ _Alle property-namen volgen de Benaming in Betty Blocks. `id`, `created_at` en `
 
 **Relaties**
 - `pwmodule4s` – Has many (`PWModule4s`)
+- `pw_zonnepaneel_prijzens` – Has many (`PWZonnepaneelPrijzens`)
 
 ## Pwzonnepanelendakoppervlakte
 **Modelinstellingen**
